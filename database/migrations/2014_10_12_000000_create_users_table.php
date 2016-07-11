@@ -16,10 +16,11 @@ class CreateUsersTable extends Migration
             $table->increments('id');
             $table->string('first_name', 50);
 			$table->string('last_name', 50);
-			$table->string(edad);
-			$table->enum();
+			$table->date('birthday');
+			$table->enum('gender', ['m', 'f']);
 			$table->string('avatar');
-			$table->string('biography');
+			$table->string('biography', 350);
+			$table->enum('role', ['administrator', 'medarator', 'author'])->default('author');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
