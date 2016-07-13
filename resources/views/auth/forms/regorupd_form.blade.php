@@ -5,7 +5,7 @@
     <label for="first_name" class="col-md-4 control-label">Nombres</label>
 
     <div class="col-md-6">
-        <input id="first_first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" maxlength="50" placeholder="Ingresa tu nombre" required>
+        <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" maxlength="50" placeholder="Ingresa tu nombre" required>
 
         @if ($errors->has('first_name'))
             <span class="help-block">
@@ -19,7 +19,7 @@
     <label for="last_name" class="col-md-4 control-label">Apellidos</label>
 
     <div class="col-md-6">
-        <input id="first_last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" placeholder="Ingresa tu apellido" maxlength="50" required>
+        <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" placeholder="Ingresa tu apellido" maxlength="50" required>
 
         @if ($errors->has('last_name'))
             <span class="help-block">
@@ -47,7 +47,7 @@
     <label for="datetime-local" class="col-md-4 control-label">Fecha de nacimiento</label>
 
     <div class="col-md-6">
-        <input id="datetime-local" type="datetime-local" class="form-control" name="datetime-local" value="{{ old('datetime-local') }}" maxlength="150" placeholder="Example@example.com" required>
+        <input id="datetime-local" type="datetime-local" class="form-control" name="datetime-local" value="{{ old('datetime-local') }}" required>
 
         @if ($errors->has('datetime-local'))
             <span class="help-block">
@@ -101,7 +101,7 @@
 </div>
 
 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-    <label for="password" class="col-md-4 control-label">Password</label>
+    <label for="password" class="col-md-4 control-label">Contraseña</label>
 
     <div class="col-md-6">
         <input id="password" type="password" class="form-control" name="password">
@@ -115,7 +115,7 @@
 </div>
 
 <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-    <label for="password-confirm" class="col-md-4 control-label">Confirm Password</label>
+    <label for="password-confirm" class="col-md-4 control-label">Confirmar contraseña</label>
 
     <div class="col-md-6">
         <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
@@ -131,7 +131,7 @@
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
         <button type="submit" class="btn btn-primary">
-            <i class="fa fa-btn fa-user"></i> Register
+            <i class="fa fa-btn fa-user"></i> Registrar
         </button>
     </div>
 </div>
