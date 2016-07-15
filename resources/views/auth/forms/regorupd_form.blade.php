@@ -1,11 +1,11 @@
 
-{{ csrf_field() }}
-
+{{ csrf_field() }} 
+<!-- First name forms group -->
 <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
     <label for="first_name" class="col-md-4 control-label">Nombres</label>
 
     <div class="col-md-6">
-        <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" maxlength="50" placeholder="Ingresa tu nombre" required>
+        <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" maxlength="50" placeholder="Ingresa tus nombres" required>
 
         @if ($errors->has('first_name'))
             <span class="help-block">
@@ -15,11 +15,12 @@
     </div>
 </div>
 
+<!-- Last name forms group -->
 <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
     <label for="last_name" class="col-md-4 control-label">Apellidos</label>
 
     <div class="col-md-6">
-        <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" placeholder="Ingresa tu apellido" maxlength="50" required>
+        <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" placeholder="Ingresa tus apellidos" maxlength="50" required>
 
         @if ($errors->has('last_name'))
             <span class="help-block">
@@ -29,6 +30,7 @@
     </div>
 </div>
 
+<!-- Email forms group -->
 <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
     <label for="email" class="col-md-4 control-label">Correo electrónico</label>
 
@@ -43,20 +45,22 @@
     </div>
 </div>
 
-<div class="form-group{{ $errors->has('datetime-local') ? ' has-error' : '' }}">
-    <label for="datetime-local" class="col-md-4 control-label">Fecha de nacimiento</label>
+<!-- Birthday forms group -->
+<div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }}">
+    <label for="birthday" class="col-md-4 control-label">Fecha de nacimiento</label>
 
     <div class="col-md-6">
-        <input id="datetime-local" type="datetime-local" class="form-control" name="datetime-local" value="{{ old('datetime-local') }}" required>
+        <input id="birthday" type="date" class="form-control" name="birthday" value="{{ old('birthday') }}" required>
 
-        @if ($errors->has('datetime-local'))
+        @if ($errors->has('birthday'))
             <span class="help-block">
-                <strong>{{ $errors->first('datetime-local') }}</strong>
+                <strong>{{ $errors->first('birthday') }}</strong>
             </span>
         @endif
     </div>
 </div>
 
+<!-- Gender forms group -->
 <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
     <label for="gender" class="col-md-4 control-label">Sexo</label>
 
@@ -72,6 +76,7 @@
     </div>
 </div>
 
+<!-- Avatar forms group -->
 <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
     <label for="avatar" class="col-md-4 control-label">Avatar</label>
 
@@ -86,6 +91,7 @@
     </div>
 </div>
 
+<!-- Biography forms group -->
 <div class="form-group{{ $errors->has('biography') ? ' has-error' : '' }}">
     <label for="biography" class="col-md-4 control-label">Sobre ti</label>
 
@@ -100,6 +106,7 @@
     </div>
 </div>
 
+<!-- Password forms group -->
 <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
     <label for="password" class="col-md-4 control-label">Contraseña</label>
 
@@ -114,6 +121,7 @@
     </div>
 </div>
 
+<!-- Comfirm password forms group -->
 <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
     <label for="password-confirm" class="col-md-4 control-label">Confirmar contraseña</label>
 
@@ -128,6 +136,7 @@
     </div>
 </div>
 
+<!-- Submit buttom forms group -->
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
         <button type="submit" class="btn btn-primary">
