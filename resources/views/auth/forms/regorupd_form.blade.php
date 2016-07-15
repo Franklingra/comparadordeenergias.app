@@ -50,7 +50,7 @@
     <label for="birthday" class="col-md-4 control-label">Fecha de nacimiento</label>
 
     <div class="col-md-6">
-        <input id="birthday" type="date" class="form-control" name="birthday" value="{{ old('birthday') }}" required>
+        <input id="birthday" type="date" class="form-control" name="birthday" placeholder="aaa-mm-dd" value="{{ old('birthday') }}" required>
 
         @if ($errors->has('birthday'))
             <span class="help-block">
@@ -96,7 +96,7 @@
     <label for="biography" class="col-md-4 control-label">Sobre ti</label>
 
     <div class="col-md-6">
-        <textarea id="biography" class="form-control" name="biography" value="{{ old('biography') }}" placeholder="Acerca de ti" maxlength="350" cols="3"> </textarea>
+        <textarea id="biography" class="form-control" name="biography" value="{{ old('biography') }}" maxlength="350" cols="3"> </textarea>
 
         @if ($errors->has('biography'))
             <span class="help-block">
