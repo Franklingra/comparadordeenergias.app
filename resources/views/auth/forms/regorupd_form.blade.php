@@ -139,7 +139,7 @@
 <!-- Submit buttom forms group -->
 <div class="form-group">
     <div class="col-md-6 col-md-offset-4">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-primary" name="submit">
             <i class="fa fa-btn fa-user"></i> Registrar
         </button>
     </div>
