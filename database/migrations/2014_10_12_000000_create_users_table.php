@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
 			$table->string('last_name', 50);
 			$table->date('birthday');
 			$table->enum('gender', ['m', 'f']);
-			$table->string('avatar');
+			$table->string('avatar')->default('default.jpg');
 			$table->string('biography', 350);
 			$table->enum('role', ['administrator', 'moderator', 'author'])->default('author');
             $table->string('email')->unique();

@@ -26,7 +26,5 @@ class UserRegisterTest extends TestCase
         	->type('1234567', 'password')
         	->type('1234567', 'password_confirmation')
         	->press('Registrar');
-        	
-
     }
 }

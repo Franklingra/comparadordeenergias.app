@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/profile', 'UserController@profile')->middleware('auth');
+
+Route::post('/profile', 'UserController@avatar_upload')->middleware('auth');
 
 Route::auth();
 
