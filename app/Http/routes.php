@@ -19,6 +19,23 @@ Route::get('/profile', 'UserController@profile')->middleware('auth');
 
 Route::post('/profile', 'UserController@avatar_upload')->middleware('auth');
 
+Route::group(['as' => 'invite::'], function () {
+
+    Route::get(
+    	'invite/send', [
+    	'as' => 'send', 
+    	'uses' => 'UserController@user_invite_send'])->middleware('auth');
+    Route::post(
+    	'invite/sent', [
+    	'as' => 'sent', 
+    	'uses' => 'UserController@user_invite_sent'])->middleware('auth');
+    Route::get(
+    	'invite/{refcode}', [
+    	'as' => 'accept', 
+    	'uses' => 'UserController@user_invite_refcode'])->middleware('invite');
+
+});
+
 Route::auth();
 
 Route::get('/home', 'HomeController@index');

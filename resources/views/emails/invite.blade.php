@@ -1,0 +1,1 @@
+ <a href="{{url('invite/'. $refCode) }}"> click aqui para registrarte </a>
