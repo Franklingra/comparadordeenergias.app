@@ -6,13 +6,14 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Invite;
+
 use Image;
 
 use Auth;
 
-use Invite;
-
 use Mail;
+
 
 class UserController extends Controller
 {
@@ -75,7 +76,7 @@ class UserController extends Controller
         */
         Mail::send('emails.invite', ['refCode' => $refCode ], function($message) use ($request){
 
-            $message->from('franklingabrielrodriguez@gmail.com', 'franklin');
+            $message->from('franklingabrielrodriguez@gmail.com', 'Comparador de energias');
 
             $message->to($request->input('email'), $request->input('name'));
 
@@ -99,7 +100,7 @@ class UserController extends Controller
     }
 
     /**
-     * Show the application dashboard.
+     * Show the register form.
      *
      * @return \Illuminate\Http\Response
      */

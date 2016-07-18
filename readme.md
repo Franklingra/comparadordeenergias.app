@@ -9,8 +9,10 @@ Registering users perform by invitation only administrators may invite users by 
 
 # depedencies
 
-* php : >=5.5.9
+* php : >= 5.5.9
 * laravel/framework: 5.2.*
+* intervention/image: ^2.3
+* junaidnasir/larainvite: ^0.1.7
 
 # Author
 

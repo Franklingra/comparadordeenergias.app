@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-10 col-md-offset-1">
-        	<img src="/uploads/avatar/{{ $user->avatar}}"/ width="150px" height="150px" style="border-radius:50%; margin-right:25px; float:left">
+        	<img src="/uploads/avatar/{{ $user->avatar}}" width="150px" height="150px" style="border-radius:50%; margin-right:25px; float:left">
             <h2>Perfil de {{ $user->first_name }}</h2>
 
             <form enctype="multipart/form-data" action="{{ url('/profile') }}" method="POST">
