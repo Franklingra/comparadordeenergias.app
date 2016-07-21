@@ -20,7 +20,7 @@ class AdminController extends Controller
     {
     	$users = User::all();
 
-    	dd($users);
+    	return view('admin.user.list')->with('users', $users);
     }
 
      /**
