@@ -19,9 +19,9 @@ Route::get('/', function () {
 *
 * Routes for profiles and profiles actions
 */
-Route::get('/profile', 'UserController@profile')->middleware('auth');
-
-Route::post('/profile', 'UserController@avatar_upload')->middleware('auth');
+Route::get('/profile', ['middleware' => 'auth', 'uses' => 'UserController@profile']);
+ 
+Route::post('/profile',['middleware' => 'auth', 'uses' => 'UserController@avatar_upload']);
 
 /**
 *
@@ -31,16 +31,24 @@ Route::post('/profile', 'UserController@avatar_upload')->middleware('auth');
 Route::group(['middleware' => 'role:administrator', 'prefix' => 'dashboard'], function(){
 
     Route::get(
+        'user/show/{$id}', 
+        'AdminController@user_show'
+        );
+
+    Route::get(
         'users/list', 
-        'AdminController@users_list');
+        'AdminController@users_list'
+        );
 
     Route::post(
         'user/delete/{id}', 
-        'AdminController@user_delete');
-    
+        'AdminController@user_delete'
+        );
+
     Route::put('
         user/update/{id}', 
-        'AdminController@user_update');
+        'AdminController@user_update'
+        );
 
 });
 /**
@@ -53,19 +61,22 @@ Route::group(['prefix' => 'invite'], function () {
     	'/send', [
     	'as'         => 'send',
         'middleware' => 'auth', 
-    	'uses'       => 'UserController@user_invite_send']);
+    	'uses'       => 'UserController@user_invite_send'
+        ]);
 
     Route::post(
     	'/sent', [
     	'as'         => 'sent',
         'middleware' => 'auth', 
-    	'uses'       => 'UserController@user_invite_sent']);
+    	'uses'       => 'UserController@user_invite_sent'
+        ]);
 
     Route::get(
     	'/{refcode}', [
     	'as'         => 'accept',
         'middleware' => 'invite', 
-    	'uses'       => 'UserController@user_invite_refcode']);
+    	'uses'       => 'UserController@user_invite_refcode'
+        ]);
 
 });
 
