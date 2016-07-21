@@ -16,10 +16,9 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->date('date');
-            $table->int('autor_id');
+            $table->integer('user_id');
             $table->string('tags');
             $table->text('content');
-            $table->int('commments_id');
             $table->timestamps();
         });
     }

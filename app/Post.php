@@ -15,9 +15,18 @@ class Post extends Model
 
     	'title',
     	'date',
-    	'author_id',
+        'user_id',
     	'tags',
     	'content',
-    	'comments_id',
     ]
+
+    public function user()
+    {
+        return $this->belongsTo('App\User');
+    }
+
+    public function comments()
+    {
+        return $this->hasMany('App\Comment');
+    }
 }

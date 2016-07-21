@@ -15,24 +15,57 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/**
+*
+* Routes for profiles and profiles actions
+*/
 Route::get('/profile', 'UserController@profile')->middleware('auth');
 
 Route::post('/profile', 'UserController@avatar_upload')->middleware('auth');
 
-Route::group(['as' => 'invite::'], function () {
+/**
+*
+* Routes for admin options
+*/
+
+Route::group(['middleware' => 'role:administrator', 'prefix' => 'dashboard'], function(){
 
     Route::get(
-    	'invite/send', [
-    	'as' => 'send', 
-    	'uses' => 'UserController@user_invite_send'])->middleware('auth');
+        'users/list', 
+        'AdminController@users_list');
+
     Route::post(
-    	'invite/sent', [
-    	'as' => 'sent', 
-    	'uses' => 'UserController@user_invite_sent'])->middleware('auth');
+        'user/delete/{id}', 
+        'AdminController@user_delete');
+    
+    Route::put('
+        user/update/{id}', 
+        'AdminController@user_update');
+
+});
+/**
+*
+* Routes for invite users
+*/
+Route::group(['prefix' => 'invite'], function () {
+
     Route::get(
-    	'invite/{refcode}', [
-    	'as' => 'accept', 
-    	'uses' => 'UserController@user_invite_refcode'])->middleware('invite');
+    	'/send', [
+    	'as'         => 'send',
+        'middleware' => 'auth', 
+    	'uses'       => 'UserController@user_invite_send']);
+
+    Route::post(
+    	'/sent', [
+    	'as'         => 'sent',
+        'middleware' => 'auth', 
+    	'uses'       => 'UserController@user_invite_sent']);
+
+    Route::get(
+    	'/{refcode}', [
+    	'as'         => 'accept',
+        'middleware' => 'invite', 
+    	'uses'       => 'UserController@user_invite_refcode']);
 
 });
 

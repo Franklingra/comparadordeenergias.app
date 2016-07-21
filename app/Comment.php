@@ -14,7 +14,13 @@ class Comment extends Model
      protected $fillable = [
 
      	'email',
+        'post_id',
      	'content',
 
      ]
+
+     public function post()
+    {
+        return $this->belongsToy('App\Post');
+    }
 }
