@@ -40,7 +40,7 @@ Route::group(['middleware' => 'role:administrator', 'prefix' => 'dashboard'], fu
         'AdminController@users_list'
         );
 
-    Route::post(
+    Route::get(
         'user/delete/{id}', 
         'AdminController@user_delete'
         );

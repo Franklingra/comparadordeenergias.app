@@ -19,7 +19,7 @@
                         <td>{{$user->last_name}}</td>
                         <td>{{$user->email}}</td>
                         <td>{{$user->role}}</td>
-                        <td>Eliminar | editar</td>
+                        <td><a href="{{ url('dashboard/user/delete', $user->id) }}">Eliminar</a> | editar</td>
                     </tr>
                     @endforeach
                 </table>

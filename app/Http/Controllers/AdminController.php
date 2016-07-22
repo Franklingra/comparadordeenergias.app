@@ -38,9 +38,11 @@ class AdminController extends Controller
      *
      * @return void
      */
-    public function user_delete()
+    public function user_delete($id)
     {
-
+        $user = User::FindOrFail($id);
+        
+        return redirect('dashboard/users/list');
     }
 
      /**
