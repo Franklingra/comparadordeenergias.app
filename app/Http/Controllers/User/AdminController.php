@@ -41,17 +41,29 @@ class AdminController extends Controller
     public function user_delete($id)
     {
         $user = User::FindOrFail($id);
-        
+        $user->delete();
         return redirect('dashboard/users/list');
     }
 
      /**
+     * show update form.
+     *
+     * @return void
+     */
+    public function user_edit()
+    {
+        echo "hola";
+    }
+
+    /**
      * Update information of the user selected.
      *
      * @return void
      */
-    public function user_update()
+    public function user_update(Request $request)
     {
-
+        $user = $request->all();
+        $user->save();
+        return redirect('dashboard/users/list');
     }
 }

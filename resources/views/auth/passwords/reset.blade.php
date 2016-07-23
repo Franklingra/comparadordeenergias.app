@@ -8,7 +8,7 @@
                 <div class="panel-heading">Resetar Contraseña</div>
 
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/password/reset') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('password.reset') }}">
                         {{ csrf_field() }}
 
                         <input type="hidden" name="token" value="{{ $token }}">
@@ -57,7 +57,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-refresh"></i> Resetear contraseña
+                                    <i class="fa fa-btn fa-refresh"></i> Restablecer contraseña
                                 </button>
                             </div>
                         </div>

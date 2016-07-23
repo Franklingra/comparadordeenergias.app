@@ -5,10 +5,10 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Login</div>
+                <div class="panel-heading">Iniciar sesiónn</div>
                 <div class="panel-body">
 
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/login') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ route('login') }}">
                         {{ csrf_field() }}
 
                         @include('auth.forms.login_form')
@@ -26,10 +26,10 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    <i class="fa fa-btn fa-sign-in"></i> Login
+                                    <i class="fa fa-btn fa-sign-in"></i> Iniciar sesión
                                 </button>
 
-                                <a class="btn btn-link" href="{{ url('/password/reset') }}">'¿Has olvidado tu contraseña?</a>
+                                <a class="btn btn-link" href="{{ route('password.reset') }}">'¿Has olvidado tu contraseña?</a>
                             </div>
                         </div>
                     </form>

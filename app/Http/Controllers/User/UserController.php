@@ -22,7 +22,17 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function profile()
+    public function index()
+    {
+        
+    }
+    
+    /**
+     * Show the user is profile.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
     {
     	return view('user.profile', array('user' => Auth::user()));
     }
@@ -32,14 +42,18 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function avatar_upload(Request $request)
+    public function avatarUpload(Request $request)
     {
     	//Handle the user upload of avatars
     	if ($request->hasFile('avatar'))
     	{
     		$avatar = $request->file('avatar');
-    		$filename = time() . '.' . $avatar->getClientOriginalExtension();
-    		Image::make($avatar)->resize(300, 300)->save( public_path('/uploads/avatar/' . $filename) );
+    		$filename = time() . '.' . $avatar
+            ->getClientOriginalExtension();
+            
+    		Image::make($avatar)
+                ->resize(300, 300)
+                ->save( public_path('/uploads/avatar/' . $filename) );
 
     		$user = Auth::user();
     		$user->avatar = $filename;
@@ -54,7 +68,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function user_invite_send()
+    public function sendInvite()
     {
         return view('user.send_invitation');
     }
@@ -63,22 +77,28 @@ class UserController extends Controller
      * Send invitation ref code and url.
      *
      */
-    public function user_invite_sent(Request $request)
+    public function sentInvite(Request $request)
     {   
         $user = Auth::user();
         
         // Generate the reference code
-        $refCode = Invite::invite($request->input('email'), $user->id);
+        $refCode = Invite::invite($request
+            ->input('email'), $user->id);
         
         /**
         * Send the url to the invite user 
         * in order to provide the register form
         */
-        Mail::send('emails.invite', ['refCode' => $refCode ], function($message) use ($request){
+        Mail::send('emails.invite', 
+            ['refCode' => $refCode ], function($message) use ($request){
 
-            $message->from('franklingabrielrodriguez@gmail.com', 'Comparador de energias');
+            $message->from(
+                'franklingabrielrodriguez@gmail.com', 
+                'Comparador de energias');
 
-            $message->to($request->input('email'), $request->input('name'));
+            $message->to($request
+                ->input('email'), $request
+                ->input('name'));
 
             $message->subject('invitacion');
 
@@ -104,7 +124,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function user_invite_refcode()
+    public function userRefcode()
     {
         return view('auth.register');
     }

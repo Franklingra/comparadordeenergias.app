@@ -12,74 +12,47 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('welcome'); 
 });
 
-/**
-*
-* Routes for profiles and profiles actions
-*/
-Route::get('/profile', ['middleware' => 'auth', 'uses' => 'UserController@profile']);
- 
-Route::post('/profile',['middleware' => 'auth', 'uses' => 'UserController@avatar_upload']);
 
-/**
-*
-* Routes for admin options
-*/
+// Authentication Routes...
+Route::get('iniciar_sesion', 
+	['as' => 'login', 'uses' => 'Auth\AuthController@showLoginForm']);
 
-Route::group(['middleware' => 'role:administrator', 'prefix' => 'dashboard'], function(){
+Route::post('iniciar_sesion', 
+	['as' => 'login', 'uses' =>'Auth\AuthController@login']);
 
-    Route::get(
-        'user/show/{$id}', 
-        'AdminController@user_show'
-        );
+Route::get('salir', 
+	['as' => 'logout', 'uses' => 'Auth\AuthController@logout']);
 
-    Route::get(
-        'users/list', 
-        'AdminController@users_list'
-        );
 
-    Route::get(
-        'user/delete/{id}', 
-        'AdminController@user_delete'
-        );
+// Invitation Routes...
+Route::group(['prefix' => 'invitar', 'as' => 'invite'], function(){
 
-    Route::put('
-        user/update/{id}', 
-        'AdminController@user_update'
-        );
-
-});
-/**
-*
-* Routes for invite users
-*/
-Route::group(['prefix' => 'invite'], function () {
-
-    Route::get(
-    	'/send', [
-    	'as'         => 'send',
-        'middleware' => 'auth', 
-    	'uses'       => 'UserController@user_invite_send'
-        ]);
-
-    Route::post(
-    	'/sent', [
-    	'as'         => 'sent',
-        'middleware' => 'auth', 
-    	'uses'       => 'UserController@user_invite_sent'
-        ]);
-
-    Route::get(
-    	'/{refcode}', [
-    	'as'         => 'accept',
-        'middleware' => 'invite', 
-    	'uses'       => 'UserController@user_invite_refcode'
-        ]);
+	Route::get('usuario', ['as' => '.user']);
 
 });
 
-Route::auth();
 
+// Registration Routes...
+Route::get('registro', 
+	['as' => 'register', 'middleware' => 'invite', 'uses' => 'Auth\AuthController@showRegistrationForm']);
+
+Route::post('registro', 
+	['as' => 'register', 'middleware' => 'invite', 'uses' => 'Auth\AuthController@register']);
+
+
+// Password Reset Routes...
+Route::get('contraseña/restablecer/{token?}', 
+	['as' => 'password.reset', 'uses' =>'Auth\PasswordController@showResetForm']);
+
+Route::post('contraseña/email', 
+	['as' => 'password.email', 'uses' => 'Auth\PasswordController@sendResetLinkEmail']);
+
+Route::post('contraseña/restablecer', 
+	['as' => 'password.reset', 'uses' => 'Auth\PasswordController@reset']);
+
+
+// home route
 Route::get('/home', 'HomeController@index');
