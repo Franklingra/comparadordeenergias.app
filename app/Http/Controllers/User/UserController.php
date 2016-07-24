@@ -1,6 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
+
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 
@@ -18,7 +20,7 @@ use Mail;
 class UserController extends Controller
 {
     /**
-     * Show the user is profile.
+     * Index
      *
      * @return \Illuminate\Http\Response
      */
@@ -26,7 +28,7 @@ class UserController extends Controller
     {
         
     }
-    
+
     /**
      * Show the user is profile.
      *
@@ -35,6 +37,26 @@ class UserController extends Controller
     public function show()
     {
     	return view('user.profile', array('user' => Auth::user()));
+    }
+
+    /**
+     * Edit form for user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit()
+    {
+
+    }
+
+    /**
+     * Update user information.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update()
+    {
+
     }
 
     /**
@@ -68,7 +90,7 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function sendInvite()
+    public function sendRefCode()
     {
         return view('user.send_invitation');
     }
@@ -77,7 +99,7 @@ class UserController extends Controller
      * Send invitation ref code and url.
      *
      */
-    public function sentInvite(Request $request)
+    public function sentRefCode(Request $request)
     {   
         $user = Auth::user();
         
@@ -94,7 +116,8 @@ class UserController extends Controller
 
             $message->from(
                 'franklingabrielrodriguez@gmail.com', 
-                'Comparador de energias');
+                'Comparador de energias'
+                );
 
             $message->to($request
                 ->input('email'), $request

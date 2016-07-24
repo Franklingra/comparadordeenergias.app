@@ -6,7 +6,7 @@
         <div class="col-md-10 col-md-offset-1">
             <h2>Enviar invitación</h2>
 
-            <form enctype="multipart/form-data" action="{{ url('/invite/sent') }}" method="POST">
+            <form enctype="multipart/form-data" action="{{ route('invite.user') }}" method="POST">
 
             	<label>Email</label>
             	<input type="email" name="email" required>

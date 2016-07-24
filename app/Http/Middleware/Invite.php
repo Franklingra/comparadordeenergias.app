@@ -18,7 +18,7 @@ class Invite
     public function handle($request, Closure $next)
     {   
 
-        $code = $request->route('refcode');
+        $code = $request->route('refCode');
         if( Invite::isValid($code))
         {
             $invitation = Invite::get($code); //retrieve invitation modal
