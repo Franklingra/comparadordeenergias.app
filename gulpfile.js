@@ -18,4 +18,7 @@ elixir(function(mix) {
           "public/css/app.css"
        ]
     );
+    mix.copy(
+    	'node_modules/bootstrap-sass/assets/fonts/bootstrap/','public/build/fonts/bootstrap'
+    	);
 });
