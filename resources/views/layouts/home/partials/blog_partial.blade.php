@@ -1,3 +1,4 @@
+<div id="gardient"></div>
 <div class="container" id="mid">
     <div class="blog-header">
        
