@@ -1,7 +1,7 @@
 <div id="gardient"></div>
 <div class="container-fluid" id="mid">
     
-    <div class="row">
+    <div class="row" id="backimg">
         <div class="col-sm-1"></div>
         <div class="col-sm-6 blog-main">
             <h2 class="blog-header">
