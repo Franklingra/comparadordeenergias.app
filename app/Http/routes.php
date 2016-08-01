@@ -12,9 +12,13 @@
 */
 
 Route::get('/', function () {
-    return view('welcome'); 
+    return view('blog.blog'); 
 });
 
+
+Route::get("/blog", function(){
+	return view('blog.post');
+});
 // Authentication Routes...
 Route::get('iniciar_sesion', 
 	['as' => 'login', 'uses' => 'Auth\AuthController@showLoginForm']);
