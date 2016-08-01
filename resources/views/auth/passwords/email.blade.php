@@ -1,5 +1,8 @@
-@extends('layouts.app')
+@extends('layouts.blog')
 
+@section('title')
+   | Restablecer contraseña
+@endsection
 <!-- Main Content -->
 @section('content')
 <div class="container">
@@ -44,4 +47,8 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+    @include('layouts.partials.all._scripts')
 @endsection

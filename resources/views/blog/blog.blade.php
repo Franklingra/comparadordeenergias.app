@@ -77,7 +77,7 @@
                         quia repellat ut tempore laborum possimus eum dicta id animi 
                         corrupti debitis ipsum officiis rerum.
                     </p>
-                    <a class="btn btn-default" href="#"> Leer más
+                    <a class="btn btn-primary" href="#"> Leer más
                         <span class="glyphicon glyphicon-chevron-right"></span>
                     </a>
                     <hr/>
@@ -96,7 +96,7 @@
     
     @section('aside')
                 <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-                    <div class="sidebar-module">
+                    <div class="sidebar-module side-module-color1">
                         <div class="well">
                         <h4>Buscar</h4>
                         <div class="input-group">
@@ -112,7 +112,7 @@
                         
                     </div>
                     
-                    <div class="sidebar-module">
+                    <div class="sidebar-module side-module-color2">
                         <h4>Archivos</h4>
                         <ol class="list-unstyled">
                             <li><a href="#">March 2014</a></li>
@@ -129,7 +129,7 @@
                             <li><a href="#">April 2013</a></li>
                         </ol>
                     </div>
-                    <div class="sidebar-module">
+                    <div class="sidebar-module side-module-color3">
                         <h4>Redes sociales</h4>
                         <ol class="list-unstyled">
                             <li><a href="#">GitHub</a></li>

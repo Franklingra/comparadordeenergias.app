@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                     </button>
                     <a class="navbar-brand" href="#">
-                        <img src="{{ asset('uploads/img/eligenergia-logo.png') }}" alt=""/>
+                        <img src="{{ asset('uploads/img/logo.png') }}" alt=""/>
                     </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
@@ -19,12 +19,28 @@
                         <li><a href="#contact">Comparador de servicios</a></li>
                         <li><a href="#about">Sobre nosotros</a></li>
                         <li><a href="#contact">Contactanos</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Nombre<span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="#">Perfil</a></li>
-                                <li><a href="#">Salir</a></li>
-                            </ul>
+                            @if (Auth::guest())
+                                
+                                <li><a href="{{ route('login') }}">Iniciar sesión</a></li>
+                                </li>
+                            @else
+                            <li class="dropdown">
+                                <a href="#" 
+                                   class="dropdown-toggle" 
+                                   data-toggle="dropdown" 
+                                   role="button" aria-haspopup="true" 
+                                   aria-expanded="false">
+                                    
+                                     {{ Auth::user()->first_name}}
+                                     
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Perfil</a></li>
+                                    <li><a href="{{ route('logout') }}">Salir</a></li>
+                                </ul>
+                            </li>
+                            @endif
                         </li>
                     </ul>
                 </div>

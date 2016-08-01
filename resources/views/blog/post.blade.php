@@ -16,7 +16,7 @@
                     <!-- Blog Post -->
                     
                     <!-- Title -->
-                    <h1>Título del artículo</h1>
+                    <h2>Título del artículo</h2>
                     
                     <!-- Author -->
                     <p class="lead">
@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <textarea class="form-control" rows="3"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-default">Envíar</button>
+                            <button type="submit" class="btn btn-primary">Envíar</button>
                         </form>
                     </div>
                     <hr/>

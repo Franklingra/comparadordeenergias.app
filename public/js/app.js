@@ -20,7 +20,7 @@ $(document).ready(function(){
    $(document).scroll(function() { 
       scroll_start = $(this).scrollTop();
       if(scroll_start > offset.top) {
-          $(".navbar").css('background-color', 'rgba(21,36,17,.7)');
+          $(".navbar").css('background-color', 'rgba(62, 71, 79,.9)');
        }
    });
     }
