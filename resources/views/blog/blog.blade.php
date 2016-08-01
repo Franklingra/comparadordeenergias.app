@@ -111,10 +111,7 @@
                         </div>
                         
                     </div>
-                    <div class="sidebar-module sidebar-module-inset">
-                        <h4>Sobre el autor</h4>
-                        <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
-                    </div>
+                    
                     <div class="sidebar-module">
                         <h4>Archivos</h4>
                         <ol class="list-unstyled">
@@ -149,7 +146,7 @@
     
     @section('footer')
         <!-- /.container -->
-        <div id="gardient"></div>
+        <div id="gardient" class="space-top"></div>
         <footer class="blog-footer">
                   <p>
                     Eligenergias.es contruido para 

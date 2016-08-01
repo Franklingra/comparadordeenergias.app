@@ -10,9 +10,9 @@
         <br/>
         <br/>
         <div class="container" id="mid">
-            <div class="row">
+            <div class="row blogpost">
                 <!-- Blog Post Content Column -->
-                <div class="col-lg-8">
+                <div class="col-lg-8 divide">
                     <!-- Blog Post -->
                     
                     <!-- Title -->
@@ -45,7 +45,7 @@
                             <div class="form-group">
                                 <textarea class="form-control" rows="3"></textarea>
                             </div>
-                            <button type="submit" class="btn btn-primary">Envíar</button>
+                            <button type="submit" class="btn btn-default">Envíar</button>
                         </form>
                     </div>
                     <hr/>
@@ -110,7 +110,11 @@
                     </div>
                     <!-- /.input-group -->
                 </div>
-
+                <!-- Blog author well-->
+                <div class="well">
+                    <h4>Sobre el autor</h4>
+                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                </div>
                 <!-- Blog Categories Well -->
                 <div class="well">
                     <h4>Blog Categories</h4>
