@@ -23,6 +23,8 @@ class User extends Authenticatable
 		'last_name',
 		'birthday',
 		'gender',
+		'twitter',
+		'facebook',
 		'avatar',
 		'biography',
 		'role',

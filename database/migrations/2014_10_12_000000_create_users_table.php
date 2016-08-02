@@ -20,6 +20,8 @@ class CreateUsersTable extends Migration
 			$table->enum('gender', ['m', 'f']);
 			$table->string('avatar')->default('default.jpg');
 			$table->string('biography', 350);
+			$table->string('twitter');
+			$table->string('facebook');
 			$table->enum('role', ['administrator', 'moderator', 'author'])->default('author');
             $table->string('email')->unique();
             $table->string('password');

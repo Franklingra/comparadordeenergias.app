@@ -16,10 +16,11 @@ class Comment extends Model
      	'email',
         'post_id',
      	'content',
+     	'user_id',
 
-     ]
+     ];
 
-     public function post()
+        public function post()
     {
         return $this->belongsToy('App\Post');
     }

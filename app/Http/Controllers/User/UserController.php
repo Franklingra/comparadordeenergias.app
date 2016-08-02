@@ -12,6 +12,8 @@ use Invite;
 
 use Image;
 
+use App\User;
+
 use Auth;
 
 use Mail;
@@ -25,8 +27,8 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        
+    {   $users = User::all();
+        return view('admin.user.list', compact('users'));
     }
 
     /**
@@ -36,7 +38,7 @@ class UserController extends Controller
      */
     public function show()
     {
-    	return view('user.profile', array('user' => Auth::user()));
+    	return view('user.profile', array('booksList', $booksList));
     }
 
     /**

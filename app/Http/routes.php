@@ -64,5 +64,13 @@ Route::post('contraseña/restablecer',
 	['as' => 'password.reset', 'uses' => 'Auth\PasswordController@reset']);
 
 
+// Panel and user functions
+Route::group(['prefix' => 'home', 'as' => 'home', 'middleware' => 'auth'], function(){
+	
+	// Admin function
+	Route::get('usuario/lista', ['as' => '.user.list', 'uses' => 'User\UserController@index']);
+	
+});
+
 // home route
-Route::get('/home', 'HomeController@index');
+Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);

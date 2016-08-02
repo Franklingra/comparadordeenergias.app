@@ -9,19 +9,24 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" href="{{url('/')}}">
                         <img src="{{ asset('uploads/img/logo.png') }}" alt=""/>
                     </a>
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
+                        @if (Auth::check())
+                            <li {{{ (Request::is('home') ? 'class=active' : '') }}}>
+                                <a href="{{url('/home')}}">Home</a>
+                            </li>
+                        @endif
                         <li><a href="#contact">Comparador de servicios</a></li>
                         <li><a href="#about">Sobre nosotros</a></li>
                         <li><a href="#contact">Contactanos</a></li>
                             @if (Auth::guest())
                                 
-                                <li><a href="{{ route('login') }}">Iniciar sesión</a></li>
+                                <li {{{ (Request::is('login') ? 'class=active' : '') }}}>
+                                    <a href="{{ route('login') }}">Iniciar sesión</a></li>
                                 </li>
                             @else
                             <li class="dropdown">

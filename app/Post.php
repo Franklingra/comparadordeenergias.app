@@ -15,10 +15,11 @@ class Post extends Model
 
     	'title',
     	'date',
+    	'image',
         'user_id',
     	'tags',
     	'content',
-    ]
+    ];
 
     public function user()
     {
