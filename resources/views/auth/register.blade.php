@@ -3,7 +3,8 @@
        | Registro
     @endsection
     @section('content')
-    <div class="container space-all" id="mid">
+    <div class="navbackground"></div>
+    <div class="container" id="mid">
         <div class="row">
             <div class="col-md-8 col-md-offset-2">
                 <div class="panel panel-default">
@@ -17,8 +18,7 @@
             </div>
         </div>
     </div>
-    @endsection
     
     @section('scripts')
-        @include('layouts.partials.all._scripts')
+         @include('layouts.partials.all._scripts')
     @endsection

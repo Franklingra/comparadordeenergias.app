@@ -13,13 +13,9 @@
     <link rel="stylesheet" type="text/css" href="{{ elixir('css/app.css') }}"/>
 
   </head>
-<body id="app-layout">
+<body>
     @include('layouts.partials.blog._header')
     <div class="navbackground"></div>
-    <br/>
-    <br/>
-    <br/>
-    @yield('menu')
     @yield('content')
 
     <!-- JavaScripts -->

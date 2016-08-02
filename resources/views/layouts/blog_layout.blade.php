@@ -13,7 +13,7 @@
     <link rel="stylesheet" type="text/css" href="{{ elixir('css/app.css') }}"/>
 
   </head>
-  <body>
+  <body class="body-color">
     @include('layouts.partials.blog._header')
     
     @yield('content')
