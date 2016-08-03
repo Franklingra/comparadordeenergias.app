@@ -68,7 +68,9 @@ Route::post('contraseña/restablecer',
 Route::group(['prefix' => 'home', 'as' => 'home', 'middleware' => 'auth'], function(){
 	
 	// Admin function
-	Route::get('usuario/lista', ['as' => '.user.list', 'uses' => 'User\UserController@index']);
+	Route::get('usuarios', ['as' => '.users', 'uses' => 'User\UserController@index']);
+	
+	Route::get('usuarios/lista', ['as' => '.users.list', 'uses' => 'User\UserController@listing']);
 	
 });
 

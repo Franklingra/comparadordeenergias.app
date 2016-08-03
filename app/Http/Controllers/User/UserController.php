@@ -22,13 +22,33 @@ use Mail;
 class UserController extends Controller
 {
     /**
+     * Display a view of the resources 
+     * response
+     */
+    public function listing()
+    {
+        $users = User::all();
+        
+        return response()->json(
+                $users->toArray()
+            );
+    }
+    
+    /**
      * Index
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {   $users = User::all();
-        return view('admin.user.list', compact('users'));
+    public function index(Request $request)
+    {   
+        $users = User::paginate(7);
+        
+        if ($request->ajax())
+        {
+            return response()->json(view('admin.user.partials._usersTable',compact('users'))->render());
+        }
+        
+        return view('admin.user.index', compact('users'));
     }
 
     /**
