@@ -16,7 +16,7 @@ class CreatePostsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('image');
-            $table->date('date');
+            $table->enum('status', ['pending', 'approved']);
             $table->integer('user_id');
             $table->string('tags');
             $table->text('content');

@@ -22,7 +22,7 @@ class CreateUsersTable extends Migration
 			$table->string('biography', 350);
 			$table->string('twitter');
 			$table->string('facebook');
-			$table->enum('role', ['administrator', 'moderator', 'author'])->default('author');
+			$table->enum('role', ['administrator', 'editor', 'author'])->default('author');
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();

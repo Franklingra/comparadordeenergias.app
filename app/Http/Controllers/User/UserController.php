@@ -31,7 +31,7 @@ class UserController extends Controller
         
         return response()->json(
                 $users->toArray()
-            );
+        );
     }
     
     /**
@@ -66,9 +66,12 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit()
+    public function edit($id)
     {
-
+        $user = User::findOrFail($id);
+        return response()->json(
+            $user->toArray()
+        );
     }
 
     /**
@@ -76,9 +79,35 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function update()
+    public function update(Request $request, $id)
     {
-
+            $user = User::findOrFail($id);
+            
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            $user->email = $request->input('email');
+            $user->birthday = $request->input('birthday');
+            $user->gender = $request->input('gender');
+            $user->biography = $request->input('biography');
+            $user->role = $request->input('role');
+            $user->save();
+            
+            if ($request->hasFile('avatar'))
+    	    {
+        		$avatar = $request->file('avatar');
+        		$filename = time() . '.' . $avatar
+                ->getClientOriginalExtension();
+                
+        		Image::make($avatar)
+                    ->resize(300, 300)
+                    ->save( public_path('/uploads/avatar/' . $filename) );
+        		$user->avatar = $filename;
+        		$user->save();
+    	    }
+    	    
+    	    return response()->json([
+    	        "mensaje" => "listo"
+    	    ]);
     }
 
     /**
@@ -172,5 +201,22 @@ class UserController extends Controller
     public function userRefcode()
     {
         return view('auth.register');
+    }
+    
+    /**
+     * Destroy the user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request, $id)
+    {
+        $user = User::findOrFail( $id );
+
+        if ( $request->ajax() ) {
+            $user->delete( $request->all() );
+    
+            return response(['msg' => 'user deleted', 'status' => 'success']);
+        }
+        return response(['msg' => 'Failed deleting the user', 'status' => 'failed']);
     }
 }

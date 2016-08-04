@@ -16,7 +16,7 @@ class UserTableSeeder extends Seeder
         DB::table('users')->insert([
         	'first_name' => 'Miguel',
         	'last_name'  => 'lozano',
-        	'birthday'   => '000-00-00',
+        	'birthday'   => '1986-09-10',
         	'gender'	 => 'm',
         	'role'		 => 'administrator',
         	'email'      => 'admin@example.com',

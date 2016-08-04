@@ -72,6 +72,12 @@ Route::group(['prefix' => 'home', 'as' => 'home', 'middleware' => 'auth'], funct
 	
 	Route::get('usuarios/lista', ['as' => '.users.list', 'uses' => 'User\UserController@listing']);
 	
+	Route::get('usuario/{id}/editar', ['as' => '.user.edit', 'uses' => 'User\UserController@edit']);
+	
+	Route::put('usuario/{id}', ['as' => '.user.update', 'uses' => 'User\UserController@update']);
+	
+	Route::delete('usuario/{id}', ['as' => '.user.delete', 'uses' => 'User\UserController@destroy']);
+	
 });
 
 // home route
