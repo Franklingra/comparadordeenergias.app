@@ -26,6 +26,18 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-md-10">
+                        @if( Session::has( 'success' ))
+                        
+                            <div class="alert alert-success alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                {{ Session::get( 'success' ) }}
+                            </div>    
+                        @elseif( Session::has( 'warning' ))
+                            <div class="alert alert-warning alert-dismissible" role="alert">
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                {{ Session::get( 'warning' ) }}
+                            </div> 
+                        @endif    
                         @yield('content')
                         </div>
                         <div class="col-md-2 divide-menu">
@@ -44,7 +56,7 @@
                                   </a>
                               </li>
                               <li role="presentation" {{{ (Request::is('home/usuarios') ? 'class=active' : '') }}}>
-                                  <a href="{{route('home.users')}}">
+                                  <a href="{{route('home.user.index')}}">
                                       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                       Usuarios
                                   </a>
@@ -67,7 +79,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="{{URL::asset('js/app.js')}}"></script>
-    
     @yield('scripts')
 </body>
 </html>

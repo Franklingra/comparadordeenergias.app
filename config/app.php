@@ -149,6 +149,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         Intervention\Image\ImageServiceProvider::class,
         Junaidnasir\Larainvite\LaraInviteServiceProvider::class,
+        Collective\Html\HtmlServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -204,6 +205,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Image' => Intervention\Image\Facades\Image::class,
         'Invite'  => Junaidnasir\Larainvite\Facades\Invite::class,
+        'Form' => Collective\Html\FormFacade::class,
+        'Html' => Collective\Html\HtmlFacade::class,
 
     ],
 

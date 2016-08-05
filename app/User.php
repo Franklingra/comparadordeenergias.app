@@ -6,6 +6,8 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 
 use Junaidnasir\Larainvite\InviteTrait;
 
+use Image;
+
 class User extends Authenticatable
 {
     /**
@@ -46,4 +48,15 @@ class User extends Authenticatable
         return $this->hasMany('App\Post');
     }
     
+    public static function avatarUpload($avatar)
+    {
+		$filename = time() . '.' . $avatar
+        ->getClientOriginalExtension();
+        
+		Image::make($avatar)
+            ->resize(300, 300)
+            ->save( public_path('/uploads/avatar/' . $filename) );
+
+		return $filename;
+    }
 }

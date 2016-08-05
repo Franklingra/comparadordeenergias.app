@@ -10,14 +10,15 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">Registro</div>
                     <div class="panel-body">
-                        <form class="form-horizontal" role="form" method="POST" action="{{ route('/register') }}">
-                            @include('auth.forms.regorupd_form')
+                        {!! Form::open(array('route' => '/register', 'method' => 'post'), array('class' => 'form-horizontal', 'role' => 'form', 'file' => 'true'))!!}
+                            @include('user.partials._register_form')
+                            
                             <!-- Password forms group -->
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
-                                <label for="password" class="col-md-4 control-label">Contraseña</label>
+                                {!! Form::label('password', 'Contraseña', array('class' => 'col-md-4 control-label')) !!}
                             
                                 <div class="col-md-6">
-                                    <input id="password" type="password" class="form-control" name="password">
+                                    {!! Form::password('password', array('class' => 'form-control')) !!}
                             
                                     @if ($errors->has('password'))
                                         <span class="help-block">
@@ -29,10 +30,10 @@
                             
                             <!-- Comfirm password forms group -->
                             <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
-                                <label for="password-confirm" class="col-md-4 control-label">Confirmar contraseña</label>
+                                {!! Form::label('password-confirm', 'Conformar contraseña', array('class' => 'col-md-4 control-label')) !!}
                             
                                 <div class="col-md-6">
-                                    <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
+                                    {!! Form::password('password-confirm', array('class' => 'form-control')) !!}
                             
                                     @if ($errors->has('password_confirmation'))
                                         <span class="help-block">
@@ -45,12 +46,11 @@
                             <!-- Submit buttom forms group -->
                             <div class="form-group">
                                 <div class="col-md-6 col-md-offset-4">
-                                    <button type="submit" class="btn btn-primary" name="submit">
-                                        <i class="fa fa-btn fa-user"></i> Registrar
-                                    </button>
+                                    <!-- submit button -->
+                                    {!! Form::submit('Registrar', array('class' => 'btn btn-info btn-outline col-md-offset-9 fa fa-btn fa-user')) !!}
                                 </div>
                             </div>
-                        </form>
+                        {!! Form::close() !!}
                     </div>
                 </div>
             </div>

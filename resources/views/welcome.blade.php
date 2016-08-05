@@ -72,6 +72,9 @@
                     <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                     <hr/>
                     <p>
+                        @foreach($posts as $post)
+                            {{$post->title}}
+                        @endforeach
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
                         Dolore, veritatis, tempora, necessitatibus inventore nisi quam 
                         quia repellat ut tempore laborum possimus eum dicta id animi 

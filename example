@@ -1,53 +1,222 @@
-<nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <div class="navbar-header">
+<?php
 
-                <!-- Collapsed Hamburger -->
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                    <span class="sr-only">Toggle Navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
+namespace App\Http\Controllers\User;
 
-                <!-- Branding Image -->
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    Comparador de energias
-                </a>
-            </div>
+use App\Http\Controllers\Controller;
 
-            <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                <!-- Left Side Of Navbar -->
-                <ul class="nav navbar-nav">
-                    <li><a href="{{ url('/home') }}">Home</a></li>
-                    @if (Auth::check())
-                        @if (Auth::user()->role == 'administrator')
-                            <li><a href="{{ route('invite.user') }}">Enviar invitacion</a></li>
-                        @endif
-                    @endif
-                </ul>
+use Illuminate\Http\Request;
 
-                <!-- Right Side Of Navbar -->
-                <ul class="nav navbar-nav navbar-right">
-                    <!-- Authentication Links -->
-                    @if (Auth::guest())
-                        <li><a href="{{ route('login') }}">Iniciar sesión</a></li>
-                       
-                    @else
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="position:relative; padding-left:50px">
-                                <img src="/uploads/avatar/{{ Auth::user()->avatar}}" style="width:32px; height:32px; position:absolute; top:10px; left:10px; border-radius:50%; " />
-                                {{ Auth::user()->first_name }} <span class="caret"></span>
-                            </a>
+use App\Http\Requests;
 
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                
-                                <a href="{{ route('logout') }}"><i class="fa fa-btn fa-sign-out"></i>Salir</a></li>
-                            </ul>
-                        </li>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
+use Invite;
+
+use Image;
+
+use App\User;
+
+use Auth;
+
+use Mail;
+
+
+class UserController extends Controller
+{
+    /**
+     * Display a view of the resources 
+     * response
+     */
+    public function listing()
+    {
+        $users = User::all();
+        
+        return response()->json(
+                $users->toArray()
+        );
+    }
+    
+    /**
+     * Index
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {   
+        $users = User::paginate(7);
+        
+        if ($request->ajax())
+        {
+            return response()->json(view('admin.user.partials._usersTable',compact('users'))->render());
+        }
+        
+        return view('admin.user.index', compact('users'));
+    }
+
+    /**
+     * Show the user is profile.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function show()
+    {
+    	return view('user.profile', array('booksList', $booksList));
+    }
+
+    /**
+     * Edit form for user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $user = User::findOrFail($id);
+        return response()->json(
+            $user->toArray()
+        );
+    }
+
+    /**
+     * Update user information.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+            $user = User::findOrFail($id);
+            
+            $user->first_name = $request->input('first_name');
+            $user->last_name = $request->input('last_name');
+            $user->email = $request->input('email');
+            $user->birthday = $request->input('birthday');
+            $user->gender = $request->input('gender');
+            $user->biography = $request->input('biography');
+            $user->role = $request->input('role');
+            $user->save();
+            
+            if ($request->hasFile('avatar'))
+    	    {
+        		$avatar = $request->file('avatar');
+        		$filename = time() . '.' . $avatar
+                ->getClientOriginalExtension();
+                
+        		Image::make($avatar)
+                    ->resize(300, 300)
+                    ->save( public_path('/uploads/avatar/' . $filename) );
+        		$user->avatar = $filename;
+        		$user->save();
+    	    }
+    	    
+    	    return response()->json([
+    	        "mensaje" => "listo"
+    	    ]);
+    }
+
+    /**
+     * Save the user's avatar.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function avatarUpload(Request $request)
+    {
+    	//Handle the user upload of avatars
+    	if ($request->hasFile('avatar'))
+    	{
+    		$avatar = $request->file('avatar');
+    		$filename = time() . '.' . $avatar
+            ->getClientOriginalExtension();
+            
+    		Image::make($avatar)
+                ->resize(300, 300)
+                ->save( public_path('/uploads/avatar/' . $filename) );
+
+    		$user = Auth::user();
+    		$user->avatar = $filename;
+    		$user->save();
+
+    		return view('user.profile', array('user' => Auth::user()));
+    	}
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function sendRefCode()
+    {
+        return view('user.send_invitation');
+    }
+
+    /**
+     * Send invitation ref code and url.
+     *
+     */
+    public function sentRefCode(Request $request)
+    {   
+        $user = Auth::user();
+        
+        // Generate the reference code
+        $refCode = Invite::invite($request
+            ->input('email'), $user->id);
+        
+        /**
+        * Send the url to the invite user 
+        * in order to provide the register form
+        */
+        Mail::send('emails.invite', 
+            ['refCode' => $refCode ], function($message) use ($request){
+
+            $message->from(
+                'franklingabrielrodriguez@gmail.com', 
+                'Comparador de energias'
+                );
+
+            $message->to($request
+                ->input('email'), $request
+                ->input('name'));
+
+            $message->subject('invitacion');
+
+        });
+
+        /**
+        * Show a message if the emails wasn't sending
+        * if not, show a succesfully message
+        */
+        if (count(Mail::failures()) > 0)
+        {
+            return view('emails.messages.error');
+
+        } 
+        else
+        {
+            return view('emails.messages.sent');
+        }
+    }
+
+    /**
+     * Show the register form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function userRefcode()
+    {
+        return view('auth.register');
+    }
+    
+    /**
+     * Destroy the user.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request, $id)
+    {
+        $user = User::findOrFail( $id );
+
+        if ( $request->ajax() ) {
+            $user->delete( $request->all() );
+    
+            return response(['msg' => 'user deleted', 'status' => 'success']);
+        }
+        return response(['msg' => 'Failed deleting the user', 'status' => 'failed']);
+    }
+}

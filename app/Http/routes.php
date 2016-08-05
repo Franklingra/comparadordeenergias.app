@@ -32,7 +32,7 @@ Route::get('salir',
 
 // Invitation Routes...
 Route::group(['prefix' => 'invitar', 'as' => 'invite.'], function(){
-
+/*
 	Route::get('usuario',
 		['as' => 'user', 'middleware' => 'auth', 'uses' => 'User\UserController@sendRefCode']);
 
@@ -41,7 +41,7 @@ Route::group(['prefix' => 'invitar', 'as' => 'invite.'], function(){
 
 	Route::get('/{refCode}',
 		['as' => 'accept', 'middleware' => 'invite', 'uses' => 'User\UserController@userRefCode']);
-
+	*/
 });
 
 
@@ -67,18 +67,18 @@ Route::post('contraseña/restablecer',
 // Panel and user functions
 Route::group(['prefix' => 'home', 'as' => 'home', 'middleware' => 'auth'], function(){
 	
-	// Admin function
-	Route::get('usuarios', ['as' => '.users', 'uses' => 'User\UserController@index']);
+	// user crud
+	Route::get('usuario', ['as' => '.user.index', 'middleware' => 'role:administrator', 'uses' => 'UserController@index']);
+	Route::get('usuario/{id}', ['as' => '.user.show', 'middleware' => 'role:administrator', 'uses' => 'UserController@show']);
+	Route::delete('usuario/{id}', ['as' => '.user.delete', 'middleware' => 'role:administrator', 'uses' => 'UserController@destroy']);
+	Route::put('usuario/{id}', ['as' => '.user.update', 'middleware' => 'role:administrator', 'uses' => 'UserController@update']);
+	Route::get('usuario/{id}', ['as' => '.user.edit', 'middleware' => 'role:administrator', 'uses' => 'UserController@edit']);
 	
-	Route::get('usuarios/lista', ['as' => '.users.list', 'uses' => 'User\UserController@listing']);
-	
-	Route::get('usuario/{id}/editar', ['as' => '.user.edit', 'uses' => 'User\UserController@edit']);
-	
-	Route::put('usuario/{id}', ['as' => '.user.update', 'uses' => 'User\UserController@update']);
-	
-	Route::delete('usuario/{id}', ['as' => '.user.delete', 'uses' => 'User\UserController@destroy']);
-	
+	Route::resource('articulo', 'PostController');
 });
+
+// post function
+
 
 // home route
 Route::get('/home', ['as' => 'home', 'uses' => 'HomeController@index']);
