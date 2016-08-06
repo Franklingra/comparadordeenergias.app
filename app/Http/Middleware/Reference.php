@@ -6,7 +6,7 @@ use Invite;
 
 use Closure;
 
-class Invite
+class Reference
 {
     /**
      * Handle an incoming request.
@@ -19,6 +19,7 @@ class Invite
     {   
 
         $code = $request->route('refCode');
+
         if( Invite::isValid($code))
         {
             $invitation = Invite::get($code); //retrieve invitation modal

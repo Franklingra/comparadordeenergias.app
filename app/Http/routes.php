@@ -31,26 +31,22 @@ Route::get('salir',
 
 
 // Invitation Routes...
-Route::group(['prefix' => 'invitar', 'as' => 'invite.'], function(){
-/*
-	Route::get('usuario',
-		['as' => 'user', 'middleware' => 'auth', 'uses' => 'User\UserController@sendRefCode']);
 
-	Route::post('usuario',
-		['as' => 'user', 'middleware' => 'auth', 'uses' => 'User\UserController@sentRefCode']);
+Route::group(['prefix' => 'invitar', 'as' => 'invite'], function(){
 
-	Route::get('/{refCode}',
-		['as' => 'accept', 'middleware' => 'invite', 'uses' => 'User\UserController@userRefCode']);
-	*/
+	Route::get('/{refCode}', ['as' => '.accept', 'middleware' => 'reference', 'uses' => 'UserController@userRefCode']);
+	Route::get('usuario/invitacion', ['as' => '.user.send', 'middleware' => 'role:administrator', 'uses' => 'UserController@sendRefCode']);
+	Route::post('usuario/invitacion/enviada', ['as' => '.user.sent', 'middleware' => 'role:administrator', 'uses' => 'UserController@sentRefCode']);
+	
 });
 
 
 // Registration Routes...
 Route::get('registro', 
-	['as' => '/register', 'middleware' => 'invite', 'uses' => 'Auth\AuthController@showRegistrationForm']);
+	['as' => '/register', 'middleware' => 'reference', 'uses' => 'Auth\AuthController@showRegistrationForm']);
 
 Route::post('registro', 
-	['as' => '/register', 'middleware' => 'invite', 'uses' => 'Auth\AuthController@register']);
+	['as' => '/register', 'uses' => 'Auth\AuthController@register']);
 
 
 // Password Reset Routes...

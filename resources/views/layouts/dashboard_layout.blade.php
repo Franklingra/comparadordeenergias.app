@@ -30,12 +30,12 @@
                         
                             <div class="alert alert-success alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                {{ Session::get( 'success' ) }}
+                                <strong>{{ Session::get( 'success' ) }}</strong>
                             </div>    
                         @elseif( Session::has( 'warning' ))
                             <div class="alert alert-warning alert-dismissible" role="alert">
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                                {{ Session::get( 'warning' ) }}
+                                <strong>{{ Session::get( 'warning' ) }}</strong>
                             </div> 
                         @endif    
                         @yield('content')
@@ -55,7 +55,7 @@
                                       Artículos
                                   </a>
                               </li>
-                              <li role="presentation" {{{ (Request::is('home/usuarios') ? 'class=active' : '') }}}>
+                              <li role="presentation" {{{ (Request::is('home/usuario') ? 'class=active' : '') }}}>
                                   <a href="{{route('home.user.index')}}">
                                       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                       Usuarios

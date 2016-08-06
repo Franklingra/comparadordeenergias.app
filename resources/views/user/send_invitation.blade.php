@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.dashboard_layout')
 
 @section('content')
 <div class="container">
@@ -6,7 +6,7 @@
         <div class="col-md-10 col-md-offset-1">
             <h2>Enviar invitación</h2>
 
-            <form enctype="multipart/form-data" action="{{ route('invite.user') }}" method="POST">
+            <form enctype="multipart/form-data" action="{{ route('invite.user.sent') }}" method="POST">
 
             	<label>Email</label>
             	<input type="email" name="email" required>

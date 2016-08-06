@@ -6,7 +6,15 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
+use Invite;
+
+use Image;
+
 use App\User;
+
+use Auth;
+
+use Mail;
 
 class UserController extends Controller
 {
@@ -15,9 +23,9 @@ class UserController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $users = User::paginate(7);
+        $users = User::name($request->get('first_name'))->orderBy('id', 'DESC')->paginate();
         
         return view('user.index', compact('users'));
     }
@@ -114,5 +122,63 @@ class UserController extends Controller
         $user->delete();
         
         return redirect()->route('home.user.index')->withSuccess( 'El usuario ha sido eliminado' );
+    }
+    
+   
+    public function sendRefCode()
+    {
+        return view('user.send_invitation');
+    }
+    
+    public function userRefCode()
+    {
+        if (Auth::check())
+        {
+            Auth::logout();
+        }
+        return view('auth.register');
+    }
+    
+    public function sentRefCode(Request $request)
+    {
+        $user = Auth::user();
+        
+        // Generate the reference code
+        $refCode = Invite::invite($request
+            ->input('email'), $user->id);
+        
+        /**
+        * Send the url to the invite user 
+        * in order to provide the register form
+        */
+        Mail::send('emails.invite', 
+            ['refCode' => $refCode ], function($message) use ($request){
+
+            $message->from(
+                'franklingabrielrodriguez@gmail.com', 
+                'Comparador de energias'
+                );
+
+            $message->to($request
+                ->input('email'), $request
+                ->input('name'));
+
+            $message->subject('invitacion');
+
+        });
+
+        /**
+        * Show a message if the emails wasn't sending
+        * if not, show a succesfully message
+        */
+        if (count(Mail::failures()) > 0)
+        {
+            return redirect()->route('home.user.index')->withDanger( 'No se ha logrado enviar la invitación' );
+
+        } 
+        else
+        {
+            return redirect()->route('home.user.index')->withSuccess( 'La invitación se ha enviádo' );
+        }
     }
 }
