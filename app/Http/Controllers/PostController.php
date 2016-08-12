@@ -15,11 +15,11 @@ class PostController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $posts = Post::paginate(7);
+        $posts = Post::title($request->get('title'))->orderBy('id', 'DESC')->paginate(7);
         
-        return view('welcome', compact('posts'));
+        return view('blog.index', compact('posts'));
     }
 
     /**
@@ -29,7 +29,7 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        return view('blog.create');
     }
 
     /**
@@ -40,7 +40,13 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new Post();
+        
+        $post->title = $request['title'];
+        $post->content = $request['content'];
+        $post->tags = $request['tags'];
+        
+        
     }
 
     /**
@@ -62,7 +68,7 @@ class PostController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view("blog.update");
     }
 
     /**
@@ -85,6 +91,10 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::findOrFail($id);
+        
+        $post->delete();
+        
+        return redirect()->route('home.post.index')->withSuccess( 'El artículo ha sido eliminado' );
     }
 }

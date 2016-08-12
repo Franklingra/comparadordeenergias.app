@@ -1,129 +1,171 @@
+@extends('layouts.blog_layout')
+
+    @section('content')
+        <!-- Carousel ================================================== -->
+        <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <!-- Indicators -->
+            <ol class="carousel-indicators">
+                <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                <li data-target="#myCarousel" data-slide-to="1"></li>
+                <li data-target="#myCarousel" data-slide-to="2"></li>
+            </ol>
+            <div class="carousel-inner" role="listbox">
+                <div class="item active">
+                    <img class="first-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="First slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Example headline.</h1>
+                            <p>Note: If you're viewing this page via a <code>file://</code> URL, the "next" and "previous" Glyphicon buttons on the left and right might not load/display properly due to web browser security rules.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Sign up today</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="second-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Second slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>Another example headline.</h1>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="item">
+                    <img class="third-slide" src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" alt="Third slide">
+                    <div class="container">
+                        <div class="carousel-caption">
+                            <h1>One more for good measure.</h1>
+                            <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
+                            <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+            </a>
+            <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+            </a>
+        </div>
+        <!-- /.carousel -->
+        <div id="gardient"></div>
+        <div class="container-fluid container-padding" id="mid">
+            
+            <div class="row" id="backimg">
+                <div class="col-sm-1"></div>
+                <div class="col-sm-6 blog-main">
+                    <h2 class="blog-header">
+                        Título del artículo
+                    </h2>
+                    <!-- First Blog Post -->
+                    <p class="lead">
+                        Publicado por <a href="index.php">Nombre del autor</a>
+                    </p>
+                    <p>
+                        <span class="glyphicon glyphicon-time"></span> 
+                        Fecha de publicación Agosto 28, 2013 a las 10:00 PM
+                    </p>
+                    <hr/>
+                    <img class="img-responsive" src="http://placehold.it/900x300" alt="">
+                    <hr/>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                        Dolore, veritatis, tempora, necessitatibus inventore nisi quam 
+                        quia repellat ut tempore laborum possimus eum dicta id animi 
+                        corrupti debitis ipsum officiis rerum.
+                    </p>
+                    <a class="btn btn-primary" href="#"> Leer más
+                        <span class="glyphicon glyphicon-chevron-right"></span>
+                    </a>
+                    <hr/>
+                    <!-- /.blog-post -->
+                    <nav>
+                        <ul class="pager">
+                            <li><a href="#">Recientes</a></li>
+                            <li><a href="#">Antiguos</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <!-- /.blog-main -->
+                <br/>
+                <br/>
+    @endsection
+    
+    @section('aside')
+                <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
+                    <div class="sidebar-module side-module-color1">
+                        <div class="well">
+                        <h4>Buscar</h4>
+                        <div class="input-group">
+                            <input type="text" class="form-control">
+                            <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <span class="glyphicon glyphicon-search"></span>
+                            </button>
+                            </span>
+                            </div>
+                        <!-- /.input-group -->
+                        </div>
+                        
+                    </div>
+                    
+                    <div class="sidebar-module side-module-color2">
+                        <h4>Archivos</h4>
+                        <ol class="list-unstyled">
+                            <li><a href="#">March 2014</a></li>
+                            <li><a href="#">February 2014</a></li>
+                            <li><a href="#">January 2014</a></li>
+                            <li><a href="#">December 2013</a></li>
+                            <li><a href="#">November 2013</a></li>
+                            <li><a href="#">October 2013</a></li>
+                            <li><a href="#">September 2013</a></li>
+                            <li><a href="#">August 2013</a></li>
+                            <li><a href="#">July 2013</a></li>
+                            <li><a href="#">June 2013</a></li>
+                            <li><a href="#">May 2013</a></li>
+                            <li><a href="#">April 2013</a></li>
+                        </ol>
+                    </div>
+                    <div class="sidebar-module side-module-color3">
+                        <h4>Redes sociales</h4>
+                        <ol class="list-unstyled">
+                            <li><a href="#">GitHub</a></li>
+                            <li><a href="#">Twitter</a></li>
+                            <li><a href="#">Facebook</a></li>
+                        </ol>
+                    </div>
+                </div>
+                <!-- /.blog-sidebar -->
+            </div>
+            <!-- /.row -->
+        </div>
+    @endsection
+    
+    @section('footer')
+        <!-- /.container -->
+        <div id="gardient" class="space-top"></div>
+        <footer class="blog-footer">
+                  <p>
+                    Eligenergias.es contruido para 
+                    <a href="http://www.eligenergia.es">Eligenergia.es</a> por 
+                    <a href="mailto:franklingabrielrodriguez@gmail.com">Franklin Rodriguez</a>.</p>
+                  <p>
+                    <a href="#">De vuelta hacía arriba</a>
+                  </p>
+                </footer>
+        </div>
+        <!-- /.container -->
+    @endsection
+    
+    @section('scripts')
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.min.js" integrity="sha384-I6F5OKECLVtK/BL+8iSLDEHowSAfUo76ZL9+kGAgTRdiByINKJaqTPH/QVNS1VDb" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
+        <script src="js/app.js"></script>
+    @endsection
 
 
-<form class="form-horizontal" role="form" method="POST" action="{{ route('home.user.update', $user->id) }}">
-  
-  <!-- First name forms group -->
-  <div class="form-group{{ $errors->has('first_name') ? ' has-error' : '' }}">
-      <label for="first_name" class="col-md-4 control-label">Nombres</label>
 
-      <div class="col-md-6">
-          <input id="first_name" type="text" class="form-control" name="first_name" value="{{ old('first_name') }}" maxlength="50" placeholder="Ingresa tus nombres" required>
-  
-          @if ($errors->has('first_name'))
-              <span class="help-block">
-                  <strong>{{ $errors->first('first_name') }}</strong>
-              </span>
-          @endif
-      </div>
-  </div>
-  
-  <!-- Last name forms group -->
-  <div class="form-group{{ $errors->has('last_name') ? ' has-error' : '' }}">
-      <label for="last_name" class="col-md-4 control-label">Apellidos</label>
-  
-      <div class="col-md-6">
-          <input id="last_name" type="text" class="form-control" name="last_name" value="{{ old('last_name') }}" placeholder="Ingresa tus apellidos" maxlength="50" required>
-  
-          @if ($errors->has('last_name'))
-              <span class="help-block">
-                  <strong>{{ $errors->first('last_name') }}</strong>
-              </span>
-          @endif
-      </div>
-  </div>
-  
-  <!-- Email forms group -->
-  <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-      <label for="email" class="col-md-4 control-label">Correo electrónico</label>
-  
-      <div class="col-md-6">
-          <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" maxlength="150" placeholder="Example@example.com" required>
-  
-          @if ($errors->has('email'))
-              <span class="help-block">
-                  <strong>{{ $errors->first('email') }}</strong>
-              </span>
-          @endif
-      </div>
-  </div>
-  
-  <!-- Birthday forms group -->
-  <div class="form-group{{ $errors->has('birthday') ? ' has-error' : '' }}">
-      <label for="birthday" class="col-md-4 control-label">Fecha de nacimiento</label>
-  
-      <div class="col-md-6">
-          <input id="birthday" type="date" class="form-control" name="birthday" placeholder="aaa-mm-dd" value="{{ old('birthday') }}" required>
-  
-          @if ($errors->has('birthday'))
-              <span class="help-block">
-                  <strong>{{ $errors->first('birthday') }}</strong>
-              </span>
-          @endif
-      </div>
-  </div>
-  
-  
-  <!-- Gender forms group -->
-  <div class="form-group{{ $errors->has('role') ? ' has-error' : '' }}">
-      <label for="role" class="col-md-4 control-label">Tipo de cuenta</label>
-  
-      <div class="col-md-6">
-            <input id="administrator" type="radio" name="role" value="administrator" checked value="{{ old('role') }}"> Administrador
-            <input id="editor" type="radio" name="role" value="editor" value="{{ old('role') }}"> Editor
-            <input id="author" type="radio" name="role" value="Autor" value="{{ old('role') }}"> Autor
-  
-          @if ($errors->has('role'))
-              <span class="help-block">
-                  <strong>{{ $errors->first('role') }}</strong>
-              </span>
-          @endif
-      </div>
-  </div>
-  
-  <!-- Gender forms group -->
-  <div class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-      <label for="gender" class="col-md-4 control-label">Sexo</label>
-  
-      <div class="col-md-6">
-            <input type="radio" id="m" name="gender" value="m" checked value="{{ old('gender') }}"> Masculino
-            <input type="radio" id="f" name="gender" value="f" value="{{ old('gender') }}"> Femenino
-  
-          @if ($errors->has('gender'))
-              <span class="help-block">
-                  <strong>{{ $errors->first('gender') }}</strong>
-              </span>
-          @endif
-      </div>
-  </div>
-  
-  <!-- Avatar forms group -->
-  <div class="form-group{{ $errors->has('avatar') ? ' has-error' : '' }}">
-      <label for="avatar" class="col-md-4 control-label">Avatar</label>
-  
-      <div class="col-md-6">
-          <input id="avatar" type="file" class="form-control" name="avatar" value="{{ old('avatar') }}">
-  
-          @if ($errors->has('avatar'))
-              <span class="help-block">
-                  <strong>{{ $errors->first('avatar') }}</strong>
-              </span>
-          @endif
-      </div>
-  </div>
-  
-  <!-- Biography forms group -->
-  <div class="form-group{{ $errors->has('biography') ? ' has-error' : '' }}">
-      <label for="biography" class="col-md-4 control-label">Sobre ti</label>
-  
-      <div class="col-md-6">
-          <textarea id="biography" class="form-control" name="biography" value="{{ old('biography') }}" maxlength="350" cols="3"> </textarea>
-  
-          @if ($errors->has('biography'))
-              <span class="help-block">
-                  <strong>{{ $errors->first('biography') }}</strong>
-              </span>
-          @endif
-      </div>
-  </div>
-  <input type="submit" class="btn btn-info btn-outline col-md-offset-9" value="Enviar"/>
-</form>

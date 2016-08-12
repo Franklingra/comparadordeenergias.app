@@ -11,8 +11,8 @@ class Post extends Model
      *
      * @var array
      */
-    protected $fillable = [
-
+    protected $fillable = 
+    [
     	'title',
     	'image',
     	'status',
@@ -29,5 +29,13 @@ class Post extends Model
     public function comments()
     {
         return $this->hasMany('App\Comment');
+    }
+    
+    public function scopeTitle($query, $name)
+    {
+        if (trim($name) != "")
+        {
+            $query->where(\DB::raw("CONCAT(title)"), "LIKE", "%$name%");   
+        }
     }
 }

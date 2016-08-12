@@ -52,34 +52,41 @@
         </div>
         <!-- /.carousel -->
         <div id="gardient"></div>
-        <div class="container-fluid" id="mid">
-            
-            <div class="row" id="backimg">
-                <div class="col-sm-1"></div>
-                <div class="col-sm-6 blog-main">
-                    <h2 class="blog-header">
-                        Título del artículo
-                    </h2>
-                    <!-- First Blog Post -->
+         <div class="container-fluid container-pad" id="mid">
+            <div class="row container-padding" id="backimg">
+                <!-- Blog Post Content Column -->
+                <div class="col-sm-7 col-sm-offset-1 blog-main">
+                    <!-- Blog Post -->
+                    
+                    <!-- Title -->
+                    <h2>Título del artículo</h2>
+                    
+                    <!-- Author -->
                     <p class="lead">
-                        Publicado por <a href="index.php">Nombre del autor</a>
-                    </p>
-                    <p>
-                        <span class="glyphicon glyphicon-time"></span> 
-                        Fecha de publicación Agosto 28, 2013 a las 10:00 PM
+                        Subtítulo
                     </p>
                     <hr/>
+                    <!-- Date/Time -->
+                    <p class="postinfo">
+                        <span class="glyphicon glyphicon-time"></span> Augosto 24, 2013 a las 9:00 PM
+                        <span class="glyphicon glyphicon-edit"></span> Comentarios (0)
+                        <span class="glyphicon glyphicon-user"></span> Publicado por 
+                        <span class="glyphicon glyphicon-thumbs-up"></span> Me gusta (0) 
+                    </p>
+                    <hr/>
+                    <!-- Preview Image -->
                     <img class="img-responsive" src="http://placehold.it/900x300" alt="">
                     <hr/>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-                        Dolore, veritatis, tempora, necessitatibus inventore nisi quam 
-                        quia repellat ut tempore laborum possimus eum dicta id animi 
-                        corrupti debitis ipsum officiis rerum.
-                    </p>
-                    <a class="btn btn-primary" href="#"> Leer más
-                        <span class="glyphicon glyphicon-chevron-right"></span>
-                    </a>
+                    <!-- Post Content -->
+                    <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ducimus, vero, obcaecati, aut, error quam sapiente nemo saepe quibusdam sit excepturi nam quia corporis eligendi eos magni recusandae laborum minus inventore?</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, tenetur natus doloremque laborum quos iste ipsum rerum obcaecati impedit odit illo dolorum ab tempora nihil dicta earum fugiat. Temporibus, voluptatibus.</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eos, doloribus, dolorem iusto blanditiis unde eius illum consequuntur neque dicta incidunt ullam ea hic porro optio ratione repellat perspiciatis. Enim, iure!</p>
+                    
+                    <a href="#" class="btn btn-info">Leer más</a>
+                    <hr/>
+                    <!-- Blog Comments -->
+                        
+                    
                     <hr/>
                     <!-- /.blog-post -->
                     <nav>
@@ -88,60 +95,74 @@
                             <li><a href="#">Antiguos</a></li>
                         </ul>
                     </nav>
-                </div>
-                <!-- /.blog-main -->
-                <br/>
-                <br/>
-    @endsection
     
-    @section('aside')
-                <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
-                    <div class="sidebar-module side-module-color1">
-                        <div class="well">
-                        <h4>Buscar</h4>
-                        <div class="input-group">
-                            <input type="text" class="form-control">
-                            <span class="input-group-btn">
-                                <button class="btn btn-default" type="button">
-                                    <span class="glyphicon glyphicon-search"></span>
-                            </button>
-                            </span>
-                            </div>
-                        <!-- /.input-group -->
-                        </div>
-                        
-                    </div>
-                    
-                    <div class="sidebar-module side-module-color2">
-                        <h4>Archivos</h4>
-                        <ol class="list-unstyled">
-                            <li><a href="#">March 2014</a></li>
-                            <li><a href="#">February 2014</a></li>
-                            <li><a href="#">January 2014</a></li>
-                            <li><a href="#">December 2013</a></li>
-                            <li><a href="#">November 2013</a></li>
-                            <li><a href="#">October 2013</a></li>
-                            <li><a href="#">September 2013</a></li>
-                            <li><a href="#">August 2013</a></li>
-                            <li><a href="#">July 2013</a></li>
-                            <li><a href="#">June 2013</a></li>
-                            <li><a href="#">May 2013</a></li>
-                            <li><a href="#">April 2013</a></li>
-                        </ol>
-                    </div>
-                    <div class="sidebar-module side-module-color3">
-                        <h4>Redes sociales</h4>
-                        <ol class="list-unstyled">
-                            <li><a href="#">GitHub</a></li>
-                            <li><a href="#">Twitter</a></li>
-                            <li><a href="#">Facebook</a></li>
-                        </ol>
-                    </div>
                 </div>
-                <!-- /.blog-sidebar -->
+    @endsection
+      
+    @section('aside')
+            <!-- Blog Sidebar Widgets Column -->
+            <div class="col-sm-3 blog-aside">
+
+                <!-- Blog Search Well -->
+                <div class="well">
+                    <h4>Blog Search</h4>
+                    <div class="input-group">
+                        <input type="text" class="form-control">
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button">
+                                <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                        </span>
+                    </div>
+                    <!-- /.input-group -->
+                </div>
+                <!-- Blog author well-->
+                <div class="well">
+                    <h4>Sobre el autor</h4>
+                    <p>Etiam porta <em>sem malesuada magna</em> mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.</p>
+                </div>
+                <!-- Blog Categories Well -->
+                <div class="well">
+                    <h4>Blog Categories</h4>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6">
+                            <ul class="list-unstyled">
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                                <li><a href="#">Category Name</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /.row -->
+                </div>
+
+                <!-- Side Widget Well -->
+                <div class="well">
+                    <h4>Side Widget Well</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Inventore, perspiciatis adipisci accusamus laudantium odit aliquam repellat tempore quos aspernatur vero.</p>
+                </div>
+
             </div>
-            <!-- /.row -->
+
         </div>
+        <!-- /.row -->    
     @endsection
     
     @section('footer')
@@ -156,8 +177,7 @@
                     <a href="#">De vuelta hacía arriba</a>
                   </p>
                 </footer>
-        </div>
-        <!-- /.container -->
+       
     @endsection
     
     @section('scripts')

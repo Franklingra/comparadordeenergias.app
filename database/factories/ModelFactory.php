@@ -24,3 +24,15 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
+    return [
+        'title' => $faker->sentence($nbWords = 6, $variableNbWords = true),
+        'image' => $faker->imageUrl($width = 640, $height = 480),
+        'status' => $faker->randomElement($array = array('pending', 'approved')),
+        'user_id' => $faker->numberBetween($min = 1, $max = 30),
+        'tags' => $faker->text($maxNbChars = 20) ,
+        'content' => $faker->realText($maxNbChars = 500, $indexSize = 3),
+    ];
+});

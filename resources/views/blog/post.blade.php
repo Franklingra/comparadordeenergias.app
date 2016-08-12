@@ -6,25 +6,26 @@
     
     @section('content')
         <div class="navbackground"></div>
-        <br/>
-        <br/>
-        <br/>
         <div class="container" id="mid">
             <div class="row blogpost">
                 <!-- Blog Post Content Column -->
                 <div class="col-lg-8 divide">
                     <!-- Blog Post -->
-                    
                     <!-- Title -->
                     <h2>Título del artículo</h2>
                     
                     <!-- Author -->
                     <p class="lead">
-                        Publicado por <a href="#">Nombre del autor</a>
+                        Subtítulo
                     </p>
                     <hr/>
                     <!-- Date/Time -->
-                    <p><span class="glyphicon glyphicon-time"></span> Fecha de publicación Augosto 24, 2013 a las 9:00 PM</p>
+                    <p class="postinfo">
+                        <span class="glyphicon glyphicon-time"></span> Augosto 24, 2013 a las 9:00 PM
+                        <span class="glyphicon glyphicon-edit"></span> Comentarios (0)
+                        <span class="glyphicon glyphicon-user"></span> Publicado por
+                        <span class="glyphicon glyphicon-thumbs-up"></span> Me gusta (0) 
+                    </p>
                     <hr/>
                     <!-- Preview Image -->
                     <img class="img-responsive" src="http://placehold.it/900x300" alt="">
@@ -170,8 +171,7 @@
             </div>
             <!-- /.row -->
         </footer>
-    </div>
-    <!-- /.container -->
+  
     @endsection
     
     @section('scripts')

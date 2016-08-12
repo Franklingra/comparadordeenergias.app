@@ -19,9 +19,9 @@
     <div class="container-fluid" id="mid">
     <div class="row">
 
-        <div class="col-md-10 col-md-offset-1">
+        <div class="col-md-12 ">
             <div class="panel panel-default">
-                <div class="panel-heading">Información</div>
+                <div class="panel-heading">Panel de administración</div>
 
                 <div class="panel-body">
                     <div class="row">
@@ -41,32 +41,46 @@
                         @yield('content')
                         </div>
                         <div class="col-md-2 divide-menu">
-                            <h4>Navegación</h4>
+                            <p class="text-center text-info">Navegación</p>
                             <ul class="nav nav-pills nav-stacked">
-                              <li role="presentation" {{{ (Request::is('home') ? 'class=active' : '') }}}>
-                                  <a href="{{url('home')}}">
+                               <li role="presentation" {{{ (Request::is('home') ? 'class=active' : '') }}}>
+                                    <a href="{{url('home')}}" >
                                       <span class="glyphicon glyphicon-home" aria-hidden="true"></span>
                                       Home 
-                                  </a>
-                              </li>
-                              <li role="presentation" {{{ (Request::is('post') ? 'class=active' : '') }}}>
-                                  <a href="#">
+                                    </a>
+                                </li>
+                                @if (Auth::user()->role == 'administrator')
+                                <li role="presentation" {{{ (Request::is('home/articulo') ? 'class=active' : '') }}}>
+                                    <a href="{{route('home.post.index')}}">
                                       <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                                       Artículos
-                                  </a>
-                              </li>
-                              <li role="presentation" {{{ (Request::is('home/usuario') ? 'class=active' : '') }}}>
-                                  <a href="{{route('home.user.index')}}">
+                                    </a>
+                                </li>
+                                <li role="presentation" {{{ (Request::is('home/paginas') ? 'class=active' : '') }}}>
+                                    <a href="{{route('home.post.index')}}">
+                                      <span class="glyphicon glyphicon-bookmark" aria-hidden="true"></span>
+                                      Páginas
+                                    </a>
+                                </li>
+                                @endif
+                                <li role="presentation" {{{ (Request::is('home/misarticulos') ? 'class=active' : '') }}}>
+                                    <a href="{{route('home.post.index')}}">
+                                      <span class="glyphicon glyphicon-book" aria-hidden="true"></span>
+                                      Mis artículos
+                                    </a>
+                                </li>
+                                <li role="presentation" {{{ (Request::is('home/usuario') ? 'class=active' : '') }}}>
+                                    <a href="{{route('home.user.index')}}">
                                       <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
                                       Usuarios
-                                  </a>
-                              </li>
-                              <li role="presentation" {{{ (Request::is('engine') ? 'class=active' : '') }}}>
-                                  <a href="#">
+                                    </a>
+                                </li>
+                                <li role="presentation" {{{ (Request::is('engine') ? 'class=active' : '') }}}>
+                                    <a href="#">
                                       <span class="glyphicon glyphicon-th-large" aria-hidden="true"></span>
                                       Comparador
-                                  </a>
-                              </li>
+                                    </a>
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -79,6 +93,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="{{URL::asset('js/app.js')}}"></script>
+    <script src="{{URL::asset('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
     @yield('scripts')
 </body>
 </html>
