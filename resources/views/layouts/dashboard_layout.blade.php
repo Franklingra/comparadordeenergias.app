@@ -94,6 +94,9 @@
     <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.min.js"></script>
     <script src="{{URL::asset('js/app.js')}}"></script>
     <script src="{{URL::asset('js/tinymce/js/tinymce/tinymce.min.js')}}"></script>
+    <!-- Go to www.addthis.com/dashboard to customize your tools -->
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-57ae7aa99fd234d0"></script>
+
     @yield('scripts')
 </body>
 </html>
