@@ -4,7 +4,7 @@
     <a href="../../index2.html" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <!-- logo for regular state and mobile devices -->
-        <span class="logo-lg"><b>Logo</b></span>
+        <span class="logo-lg"><b><img class="brand-image" src="{{ asset('uploads/img/logo.png') }}"  width="110" alt=""/></b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -15,9 +15,9 @@
                     <a href="#" class="dropdown-toggle"
                        data-toggle="dropdown">
                         <img class="user-image" 
-                                 src="../../uploads/avatar/default.jpg" 
+                                 src="../../uploads/avatar/{{ Auth::user()->avatar}}" 
                                  alt="Avatar"/>
-                        <span class="hidden-xs">Alexander Pierce</span>
+                        <span class="hidden-xs">{{ Auth::user()->first_name}} {{ Auth::user()->last_name}}</span>
                     </a>
                     <ul class="dropdown-menu">
                         <!-- User image -->
@@ -25,10 +25,9 @@
                             <img class="img-circle" 
                                  src="../../uploads/avatar/default.jpg" 
                                  alt="Avatar"/>
-
                             <p>
-                                Alexander Pierce
-                                <small>Miembro desde Nov. 2012</small>
+                                {{ Auth::user()->first_name}} {{ Auth::user()->last_name}}
+                                <small>Miembro desde {{ date('d M Y',Auth::user()->created_at)}}</small>
                             </p>
                         </li>
                         <li class="user-footer">

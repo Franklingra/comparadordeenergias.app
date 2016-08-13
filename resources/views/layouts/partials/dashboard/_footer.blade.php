@@ -1,7 +1,7 @@
 <footer class="main-footer">
     <div class="pull-right hidden-xs">
     </div>
-    Copyright &copy;2016 <a href="mailto:franklingra@outlook.com">Franklin Rodriguez</a>. Para <a href="" > Eligenergia.es</a>Todos los derechos
+    Copyright &copy;2016 <a href="mailto:franklingra@outlook.com">Franklin Rodriguez</a>. Para <a href="{{url('home')}}" > Eligenergia.es</a>Todos los derechos
     reservados.
 </footer>
 <!-- /.Footer-->
