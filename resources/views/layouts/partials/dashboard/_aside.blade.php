@@ -5,7 +5,7 @@
                 <div class="user-panel">
                     <div class="pull-left image">
                         <img class="img-circle" 
-                                 src="../../uploads/avatar/{{ Auth::user()->avatar}}" 
+                                 src="../../../uploads/avatar/{{ Auth::user()->avatar}}" 
                                  alt="Avatar"/>
                     </div>
                     <div class="pull-left info">

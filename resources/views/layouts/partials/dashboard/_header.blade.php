@@ -1,7 +1,7 @@
 <!-- Navbar-->
 <header class="main-header">
 <!-- Logo -->
-    <a href="../../index2.html" class="logo">
+    <a href="{{url('home')}}" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <!-- logo for regular state and mobile devices -->
         <span class="logo-lg"><b><img class="brand-image" src="{{ asset('uploads/img/logo.png') }}"  width="110" alt=""/></b></span>
@@ -15,7 +15,7 @@
                     <a href="#" class="dropdown-toggle"
                        data-toggle="dropdown">
                         <img class="user-image" 
-                                 src="../../uploads/avatar/{{ Auth::user()->avatar}}" 
+                                 src="../../../uploads/avatar/{{ Auth::user()->avatar}}" 
                                  alt="Avatar"/>
                         <span class="hidden-xs">{{ Auth::user()->first_name}} {{ Auth::user()->last_name}}</span>
                     </a>
@@ -23,7 +23,7 @@
                         <!-- User image -->
                         <li class="user-header">
                             <img class="img-circle" 
-                                 src="../../uploads/avatar/default.jpg" 
+                                 src="../../../uploads/avatar/{{ Auth::user()->avatar}}" 
                                  alt="Avatar"/>
                             <p>
                                 {{ Auth::user()->first_name}} {{ Auth::user()->last_name}}
@@ -32,7 +32,7 @@
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="#" class="btn btn-default btn-flat">Perfil</a>
+                                <a href="" class="btn btn-default btn-flat">Perfil</a>
                             </div>
                             <div class="pull-left margin-left">
                                 <a href="#" class="btn btn-default btn-flat" data-toggle="offcanvas"

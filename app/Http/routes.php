@@ -96,11 +96,6 @@ Route::group(['prefix' => 'home', 'as' => 'home', 'middleware' => 'auth'], funct
 		'middleware' => 'role:administrator', 
 		'uses' => 'UserController@index'
 	]);
-	Route::get('usuario/{id}', [
-		'as' => '.user.show', 
-		'middleware' => 'role:administrator', 
-		'uses' => 'UserController@show'
-	]);
 	Route::delete('usuario/{id}', [
 		'as' => '.user.delete', 
 		'middleware' => 'role:administrator', 
@@ -111,11 +106,16 @@ Route::group(['prefix' => 'home', 'as' => 'home', 'middleware' => 'auth'], funct
 		'middleware' => 'role:administrator', 
 		'uses' => 'UserController@update'
 	]);
-	Route::get('usuario/{id}', [
+	Route::get('usuario/{id}/editar', [
 		'as' => '.user.edit', 
 		'middleware' => 'role:administrator', 
 		'uses' => 'UserController@edit'
 	]);
+	Route::get('usuario/{id}', [
+		'as' => '.user.show', 
+		'uses' => 'UserController@show'
+	]);
+	
 	
 	// Post crud
 	Route::get('articulo', [
@@ -130,10 +130,6 @@ Route::group(['prefix' => 'home', 'as' => 'home', 'middleware' => 'auth'], funct
 		'as' => '.post.store', 
 		'uses' => 'PostController@store'
 	]);
-	Route::get('articulo/{id}', [
-		'as' => '.post.show', 
-		'uses' => 'PostController@show'
-	]);
 	Route::delete('articulo/{id}', [
 		'as' => '.post.delete', 
 		'uses' => 'PostController@destroy'
@@ -146,6 +142,12 @@ Route::group(['prefix' => 'home', 'as' => 'home', 'middleware' => 'auth'], funct
 		'as' => '.post.edit', 
 		'uses' => 'PostController@edit'
 	]);
+	Route::get('articulo/{id}/editar', [
+		'as' => '.post.show', 
+		'uses' => 'PostController@show'
+	]);
+	
+	
 	
 });
 
