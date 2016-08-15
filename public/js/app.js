@@ -37,4 +37,7 @@ $(document).ready(function(){
     language : "es",
   });
     
+  $('#user-delete').click(function(){
+    alert("qwdqwd");
+  });
 });

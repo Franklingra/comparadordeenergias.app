@@ -12,7 +12,6 @@
                     <div class="panel-body">
                         {!! Form::open(array('route' => '/register', 'class' => 'form-horizontal')) !!}
                             @include('user.partials._register_form')
-                            {!! Form::token() !!}
                             <!-- Password forms group -->
                             <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                 {!! Form::label('password', 'Contraseña', array('class' => 'col-md-4 control-label')) !!}

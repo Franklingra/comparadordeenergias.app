@@ -150,6 +150,7 @@ return [
         Intervention\Image\ImageServiceProvider::class,
         Junaidnasir\Larainvite\LaraInviteServiceProvider::class,
         Collective\Html\HtmlServiceProvider::class,
+        Codecourse\Notify\NotifyServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -207,6 +208,7 @@ return [
         'Invite'  => Junaidnasir\Larainvite\Facades\Invite::class,
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
+        'Notify' => Codecourse\Notify\Facades\Notify::class,
 
     ],
 

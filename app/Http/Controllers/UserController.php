@@ -102,11 +102,10 @@ class UserController extends Controller
             $user->avatar = User::avatarUpload($request->file('avatar'));     
         }
         
-        
         $user->save();
         
+        notify()->flash('¡Información actualizada!', 'success');
         return redirect()->route('home.user.index')->withSuccess( 'El usuario ha sido actualizado' );
-         
     }
 
     /**
@@ -120,6 +119,8 @@ class UserController extends Controller
         $user = User::findOrFail($id);
         
         $user->delete();
+        
+        notify()->flash('¡Usuario eliminado exitosamente!', 'success');
         
         return redirect()->route('home.user.index')->withSuccess( 'El usuario ha sido eliminado' );
     }
@@ -142,10 +143,8 @@ class UserController extends Controller
     public function sentRefCode(Request $request)
     {
         $user = Auth::user();
-        
         // Generate the reference code
-        $refCode = Invite::invite($request
-            ->input('email'), $user->id);
+        $refCode = Invite::invite($request->input('email'), $user->id);
         
         /**
         * Send the url to the invite user 
@@ -153,18 +152,15 @@ class UserController extends Controller
         */
         Mail::send('emails.invite', 
             ['refCode' => $refCode ], function($message) use ($request){
-
             $message->from(
-                'franklingabrielrodriguez@gmail.com', 
-                'Comparador de energias'
+                    'franklingabrielrodriguez@gmail.com', 
+                    'Comparador de energias'
                 );
-
             $message->to($request
-                ->input('email'), $request
-                ->input('name'));
+                        ->input('email'), $request
+                        ->input('name'));
 
             $message->subject('invitacion');
-
         });
 
         /**
@@ -173,11 +169,13 @@ class UserController extends Controller
         */
         if (count(Mail::failures()) > 0)
         {
+            notify()->flash('¡Invitación enviada exitosamente!', 'warning');
             return redirect()->route('home.user.index')->withDanger( 'No se ha logrado enviar la invitación' );
 
         } 
         else
         {
+            notify()->flash('¡Invitación enviada exitosamente!', 'success');
             return redirect()->route('home.user.index')->withSuccess( 'La invitación se ha enviádo' );
         }
     }

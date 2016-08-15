@@ -1,5 +1,6 @@
+
 <div class="table-responsive">
-    <table class="table table-bordered">
+    <table id="example2" class="table table-bordered table-hover dataTable">
         <thead>
             <th class="text-center">Nombre</th>
             <th class="text-center">Apellido</th>
@@ -12,9 +13,9 @@
         </thead>
         <tbody id="data">
             @foreach($users as $user)
-                {!! Form::open(array('id' => 'form1','method' => 'delete', 'action' => ['UserController@destroy',$user->id], 'onsubmit' => 'return confirm("¿Estás seguro de eliminar a este usuario?");', 'files' => 'true')) !!} 
+                {!! Form::open(array('id' => 'form1','method' => 'delete', 'action' => ['UserController@destroy',$user->id], 'onsubmit' => '', 'files' => 'true')) !!} 
                     <tr>
-                        <td class="text-center">{{$user->first_name}}</td>
+                        <td class="text-center" >{{$user->first_name}}</td>
                         <td class="text-center">{{$user->last_name}}</td>
                         <td class="text-center">{{$user->email}}</td>
                         <td class="text-center">{{$user->role}}</td>
@@ -26,18 +27,19 @@
                         <td class="text-center">{{$user->birthday}}</td>
                         <td class="text-center">{{$user->gender}}</td>
                         <td class="text-center">
-                            <a class='btn-table btn btn-info btn-outline btn-sm' 
-                               href="{{route('home.user.edit', $user)}}">
-                                Editar
-                            </a>
-                            
-                            {!! Form::open(array('route' => array('home.user.delete', $user->id), 'method' => 'delete')) !!}
-                                {{ csrf_field() }}
-                                {{ method_field("DELETE") }}
-                                {!! Form::submit('Eliminar', array('class' => 'btn-table btn btn-danger btn-outline btn-sm', 'onsubmit' => 'return Confirm("¿Eliminara este usuario?");')) !!}
+                            <div class="btn-group">
+                                <a class='btn  btn-info btn-xs' 
+                                   href="{{route('home.user.edit', $user)}}">
+                                    Editar
+                                </a>
+                                    {{ csrf_field() }}
+                                    <button type="submit" class="btn btn-danger btn-xs btn-delete-user">Eliminar</button>
+                                    
+                                       
+                            </div>
                         </td>
                     </tr>
-                {!! Form::close() !!}
+                {!! Form::close() !!} 
             @endforeach
         </tbody>
     </table>

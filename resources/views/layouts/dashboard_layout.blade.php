@@ -4,17 +4,20 @@
         <!-- Tell the browser to be responsive to screen width -->
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
         <!-- Bootstrap 3.3.6 -->
-        <link rel="stylesheet" type="text/css" href="css/dashboard/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/dashboard/bootstrap.min.css') }}"/>
         <!-- Font Awesome -->
         <link rel="stylesheet" type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
         <!-- Ionicons -->
         <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
         <!-- Theme style -->
-        <link rel="stylesheet" type="text/css" href="css/dashboard/AdminLTE.css"/>
-        <link rel="stylesheet" type="text/css" href="css/dashboard/customize.css"/>
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/dashboard/AdminLTE.css') }}"/>
+        <!-- custom styles -->
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/dashboard/customize.css') }}"/>
+        <!-- sweetalert css -->
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/dashboard/sweetalert.css') }}"/>
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
-        <link rel="stylesheet" type="text/css" href="css/dashboard/_all-skins.css"/>
+        <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/dashboard/_all-skins.css') }}"/>
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -37,14 +40,14 @@
             <!-- Main content -->
             <section class="content">
                 <!-- Default box -->
-                <div class="box">
+                
                     @yield('second_title')
                      <div class="box-body">
                         @yield('content')
                      </div>
                      <!-- /.box-body -->
                      <div class="box-footer">
-                        <p class="pull-right">{{Carbon\Carbon::today()->format('Y-m-d')}}</p>
+                         @yield('footer_box')
                      </div>
                      <!-- /.box-footer-->
                     </div>
@@ -57,6 +60,8 @@
             <!-- Footer -->
             @include('layouts.partials.dashboard._footer')
             <!-- /.Footer -->
+            <aside class="control-sidebar control-sidebar-dark"></aside>
+            <div class="control-sidebar-bg" style="position: fixed; height: auto;"></div>
         </div>
         
         <!-- jQuery 2.2.3 -->
@@ -64,13 +69,24 @@
         <!-- Bootstrap 3.3.6 -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
         <!-- SlimScroll -->
-        <script src="js/dashboard/jquery.slimscroll.min.js"></script>
+        <script src="{{ URL::asset('js/dashboard/jquery.slimscroll.min.js') }}"></script>
         <!-- FastClick -->
-        <script src="js/dashboard/fastclick.min.js"></script>
+        <script src="{{ URL::asset('js/dashboard/fastclick.min.js') }}"></script>
         <!-- AdminLTE App -->
-        <script src="js/dashboard/app.min.js"></script>
+        <script src="{{ URL::asset('js/dashboard/app.min.js') }}"></script>
         <!-- AdminLTE for demo purposes -->
-        <script src="js/dashboard/demo.js"></script>
-        @yield('scripts');    
+        <script src="{{ URL::asset('js/dashboard/demo.js') }}"></script>
+        <!-- sweetalert -->
+        <script src="{{ URL::asset('js/dashboard/sweetalert.min.js') }}"></script>
+        <script src="{{ URL::asset('js/dashboard/customize.js') }}"></script>
+        <script>
+            @if(notify()->ready())
+                swal({
+                    title: '{!! notify()->message() !!}',
+                    type: '{{ notify()->type() }}'
+                });
+            @endif
+        </script>
+        @yield('scripts')    
     </body>
 </html>

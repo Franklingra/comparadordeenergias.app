@@ -15,6 +15,9 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" type="text/css" href="css/dashboard/_all-skins.css"/>
+        <!-- icheck -->
+        <link rel="stylesheet" type="text/css" href="css/dashboard/blue.css"/>
+        
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -23,43 +26,10 @@
         <![endif]-->
         <title>Eligenergia.es @yield('title')</title>
     </head>
-    <body class="hold-transition skin-blue sidebar-mini">
-        <div class="wrapper">
-            <!-- Header -->
-            @include('layouts.partials.dashboard._header')
-            <!-- /.Header -->
-            <!-- Aside -->
-            @include('layouts.partials.dashboard._aside')
-            <!-- /.Aside -->
-            <!-- Content -->
-            <div class="content-wrapper">
-                @yield('content_header')
-            <!-- Main content -->
-            <section class="content">
-                <!-- Default box -->
-                <div class="box">
-                    @yield('second_title')
-                    
-                     <div class="box-body">
-                        @yield('content')
-                     </div>
-                     <!-- /.box-body -->
-                     <div class="box-footer">
-                        Footer
-                     </div>
-                     <!-- /.box-footer-->
-                    </div>
-                    <!-- /.box -->
-                </section>
-                <!-- /.content -->
-            </div>
-        <!-- /. Page content-->
-            <!-- /.Content -->
-            <!-- Footer -->
-            @include('layouts.partials.dashboard._footer')
-            <!-- /.Footer -->
-        </div>
+    <body class="hold-transition register-page">
         
+       
+            @yield('content')
         <!-- jQuery 2.2.3 -->
         <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
         <!-- Bootstrap 3.3.6 -->
@@ -72,6 +42,21 @@
         <script src="js/dashboard/app.min.js"></script>
         <!-- AdminLTE for demo purposes -->
         <script src="js/dashboard/demo.js"></script>
+        <!-- icheck -->
+        <script src="js/dashboard/icheck.min.js"></script>
+        <!-- datepicker3 -->
+        <script src="js/dashboard/bootstrap-datepicker.js"></script>
+        <script>
+          $(function () {
+            $('input').iCheck({
+              checkboxClass: 'icheckbox_square-blue',
+              radioClass: 'iradio_square-blue',
+              increaseArea: '20%' // optional
+            });
+          });
+        </script>
+        
+        
         @yield('scripts');    
     </body>
 </html>
