@@ -94,6 +94,7 @@ class UserController extends Controller
              'email',
              'role',
              'gender',
+             'biography',
              'birthday'
         );
         

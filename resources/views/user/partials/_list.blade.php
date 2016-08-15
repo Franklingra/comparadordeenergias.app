@@ -15,7 +15,11 @@
             @foreach($users as $user)
                 {!! Form::open(array('id' => 'form1','method' => 'delete', 'action' => ['UserController@destroy',$user->id], 'onsubmit' => '', 'files' => 'true')) !!} 
                     <tr>
-                        <td class="text-center" >{{$user->first_name}}</td>
+                        <td class="text-center" > 
+                            <a href="{{ route('home.user.show', array('id' => $user->id)) }}">
+                                {{$user->first_name}}
+                            </a>
+                        </td>
                         <td class="text-center">{{$user->last_name}}</td>
                         <td class="text-center">{{$user->email}}</td>
                         <td class="text-center">{{$user->role}}</td>
@@ -34,8 +38,6 @@
                                 </a>
                                     {{ csrf_field() }}
                                     <button type="submit" class="btn btn-danger btn-xs btn-delete-user">Eliminar</button>
-                                    
-                                       
                             </div>
                         </td>
                     </tr>

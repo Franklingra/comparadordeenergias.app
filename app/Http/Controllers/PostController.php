@@ -95,6 +95,8 @@ class PostController extends Controller
         
         $post->delete();
         
+        notify()->flash('¡Artículo eliminado exitosamente!', 'success');
+        
         return redirect()->route('home.post.index')->withSuccess( 'El artículo ha sido eliminado' );
     }
 }

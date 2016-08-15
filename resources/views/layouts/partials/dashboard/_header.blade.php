@@ -32,7 +32,7 @@
                         </li>
                         <li class="user-footer">
                             <div class="pull-left">
-                                <a href="" class="btn btn-default btn-flat">Perfil</a>
+                                <a href="{{ route('home.user.show', array('id' => Auth::user()->id)) }}" class="btn btn-default btn-flat">Perfil</a>
                             </div>
                             <div class="pull-left margin-left">
                                 <a href="#" class="btn btn-default btn-flat" data-toggle="offcanvas"

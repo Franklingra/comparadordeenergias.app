@@ -18,9 +18,6 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/dashboard/_all-skins.css') }}"/>
-        <link rel="stylesheet" type="text/css" href="{{ URL::asset('css/dashboard/bootstrap-tagsinput.css') }}"/>
-        <!-- tags input css -->
-        
         <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
         <!--[if lt IE 9]>
@@ -40,21 +37,11 @@
             <!-- Content -->
             <div class="content-wrapper">
                 @yield('content_header')
-            <!-- Main content -->
-            <section class="content">
-                <!-- Default box -->
-                
-                    @yield('second_title')
-                     <div class="box-body">
-                        @yield('content')
-                     </div>
-                     <!-- /.box-body -->
-                     <div class="box-footer">
-                         @yield('footer_box')
-                     </div>
-                     <!-- /.box-footer-->
-                    </div>
-                    <!-- /.box -->
+                <!-- Main content -->
+                <section class="content">
+                    <!-- Default box -->
+                    @yield('content')
+                 
                 </section>
                 <!-- /.content -->
             </div>
@@ -82,7 +69,6 @@
         <!-- sweetalert -->
         <script src="{{ URL::asset('js/dashboard/sweetalert.min.js') }}"></script>
         <script src="{{ URL::asset('js/dashboard/customize.js') }}"></script>
-        <script src="{{ URL::asset('js/dashboard/bootstrap-tagsinput.js') }}"></script>
         <script>
             @if(notify()->ready())
                 swal({
